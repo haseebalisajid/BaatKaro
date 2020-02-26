@@ -368,7 +368,6 @@ function signIn() {
 
 function signOut() {
     firebase.auth().signOut();
-    document.getElementById('side-2').classList.remove('d-none');
 
 }
 
