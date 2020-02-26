@@ -368,7 +368,7 @@ function signIn() {
 
 function signOut() {
     firebase.auth().signOut();
-    showChatList();
+    
 }
 
 function onFirebaseStateChanged() {
