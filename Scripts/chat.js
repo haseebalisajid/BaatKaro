@@ -368,7 +368,8 @@ function signIn() {
 
 function signOut() {
     firebase.auth().signOut();
-    hideChatList();
+    document.getElementById('side-2').classList.remove('d-none');
+
 }
 
 function onFirebaseStateChanged() {
