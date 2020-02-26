@@ -368,7 +368,7 @@ function signIn() {
 
 function signOut() {
     firebase.auth().signOut();
-    
+    document.getElementById('divStart').removeAttribute('style');
 }
 
 function onFirebaseStateChanged() {
