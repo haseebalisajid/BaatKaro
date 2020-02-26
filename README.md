@@ -1,2 +1,2 @@
-# ChatApp
+# Baat Karo
 Web Chat Application
