@@ -368,6 +368,7 @@ function signIn() {
 
 function signOut() {
     firebase.auth().signOut();
+    document.getElementById('side-1').innerHTML='';
 }
 
 function onFirebaseStateChanged() {
