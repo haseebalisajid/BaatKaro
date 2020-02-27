@@ -8,6 +8,13 @@ document.addEventListener('keydown', function (key) {
     }
 });
 
+function send(){
+    document.addEventListener('keydown', function (key) {
+        if (key.which === 13) {
+            SendMessage();
+        }
+    });
+}
 ////////////////////////////////////////
 function ChangeSendIcon(control) {
     if (control.value !== '') {
