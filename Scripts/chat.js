@@ -96,7 +96,7 @@ function loadAllEmoji() {
     for (var i = 128512; i <= 128566; i++) {
         emoji += `<a href="#" style="font-size: 22px;" onclick="getEmoji(this)">&#${i};</a>`;
     }
-    emoji += `<a href="#" style="font-size: 22px;" onclick="getEmoji(this)">&#${56614};</a>`;
+    emoji += `<a href="#" style="font-size: 22px;" onclick="getEmoji(this)">&#${29318};</a>`;
     document.getElementById('smiley').innerHTML = emoji;
 }
 
