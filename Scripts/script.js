@@ -1,1 +1,1 @@
-setTimeout(function(){ window.location.href="/main.html"; }, 3500);
+setTimeout(function(){ window.location.href="/main.html"; }, 2500);
