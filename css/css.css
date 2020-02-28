@@ -6,7 +6,7 @@
 }
 
 .main-heading {
-  color: #777;
+  color: black;
   text-transform: uppercase;
 }
 
@@ -25,7 +25,7 @@
   font-weight: bold;
   text-align: center;
   letter-spacing: 6px;
-  color: hotpink;
+  color: black;
   animation: moveInRight 1s ease-out;
 }
 
