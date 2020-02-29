@@ -295,6 +295,12 @@ function clearChatHistory(){
     db.remove();
     location.reload();
 }
+function clearChatHistory(){
+    var db = firebase.database().ref('friend_list').child(chatKey);
+    console.log(chatKey);
+    db.remove();
+    location.reload();
+}
 ///////////////////////////////////////////////////////////////////////
 /////////////
 
