@@ -292,7 +292,8 @@ function SendImage(event) {
 function clearChatHistory(){
     var db = firebase.database().ref('chatMessages').child(chatKey);
     console.log(chatKey);
-    //db.remove();
+    db.remove();
+    location.reload();
 }
 ///////////////////////////////////////////////////////////////////////
 /////////////
