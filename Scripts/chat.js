@@ -291,13 +291,16 @@ function SendImage(event) {
 }
 function clearChatHistory(){
     var db = firebase.database().ref('chatMessages').child(chatKey);
-    console.log(chatKey);
     db.remove();
     location.reload();
 }
 function unFriend(){
     var db = firebase.database().ref('friend_list').child(chatKey);
-    console.log(chatKey);
+    db.remove();
+    location.reload();
+}
+function unFriend(){
+    var db = firebase.database().ref('users').child(chatKey);
     db.remove();
     location.reload();
 }
