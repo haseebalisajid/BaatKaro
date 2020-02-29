@@ -301,6 +301,9 @@ function unFriend(){
     db.remove();
     location.reload();
 }
+function loading(){
+    alert("This function is not available Right now");
+}
 ///////////////////////////////////////////////////////////////////////
 /////////////
 
