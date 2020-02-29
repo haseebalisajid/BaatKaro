@@ -8,13 +8,7 @@ document.addEventListener('keydown', function (key) {
     }
 });
 
-function send(){
-    document.addEventListener('keydown', function (key) {
-        if (key.which === 13) {
-            SendMessage();
-        }
-    });
-}
+
 ////////////////////////////////////////
 function ChangeSendIcon(control) {
     if (control.value !== '') {
@@ -343,7 +337,7 @@ function PopulateFriendList() {
     db.on('value', function (users) {
         if (users.hasChildren()) {
             lst = `<li class="list-group-item" style="background-color:#f8f8f8;">
-                            <input type="text" placeholder="Search or new chat" class="form-control form-rounded" />
+                            <input id="Search" type="text" placeholder="Search or new chat" class="form-control form-rounded" />
                         </li>`;
         }
         users.forEach(function (data) {
