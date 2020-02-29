@@ -294,6 +294,7 @@ function clearChatHistory(){
 }
 function unFriend(){
     var db = firebase.database().ref('friend_list').child(chatKey);
+    clearChatHistory();
     db.remove();
     location.reload();
 }

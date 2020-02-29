@@ -23,6 +23,7 @@ var firebaseConfig = {
 const messaging = firebase.messaging();
 
 messaging.setBackgroundMessageHandler(function (payload) {
+
     // Customize notification here
     const notificationTitle = 'You have new message';
     const notificationOptions = {
