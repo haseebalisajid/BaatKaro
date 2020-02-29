@@ -302,7 +302,7 @@ function unFriend(){
     location.reload();
 }
 function loading(){
-    alert("This function is not available Right now");
+    alert("This feature is not available Right now");
 }
 ///////////////////////////////////////////////////////////////////////
 /////////////
