@@ -289,6 +289,10 @@ function SendImage(event) {
         }
     }
 }
+function clearChatHistory(){
+    var db = firebase.database().ref('chatMessages').child(currentUserKey);
+    db.remove();
+}
 ///////////////////////////////////////////////////////////////////////
 /////////////
 
