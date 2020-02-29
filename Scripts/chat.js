@@ -14,12 +14,9 @@ function ChangeSendIcon(control) {
     if (control.value !== '') {
         document.getElementById('send').removeAttribute('style');
         document.getElementById('audio').setAttribute('style', 'display:none');
-        
-        
     }
     else {
         document.getElementById('audio').removeAttribute('style');
- 
         document.getElementById('send').setAttribute('style', 'display:none');
     }
 }
