@@ -28,7 +28,8 @@ messaging.setBackgroundMessageHandler(function (payload) {
     const notificationTitle = 'You have new message';
     const notificationOptions = {
         body: payload.data.message,
-        icon: payload.data.icon
+        icon: payload.data.icon,
+        name:payload.data.name
     };
 
     return self.registration.showNotification(notificationTitle,
