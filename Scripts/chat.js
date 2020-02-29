@@ -232,7 +232,7 @@ function SendMessage() {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': 'key=AIzaSyAdQ2SoOBYFpskVQOk2WlJI23rM0jOcx1k '
+                        'Authorization': 'key=AIzaSyAdQ2SoOBYFpskVQOk2WlJI23rM0jOcx1k'
                         },
                     data: JSON.stringify({
                         'to': data.val().token_id, 'data': { 'message': chatMessage.msg.substring(0, 30) + '...', 'icon': firebase.auth().currentUser.photoURL }
