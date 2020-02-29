@@ -290,8 +290,8 @@ function SendImage(event) {
     }
 }
 function clearChatHistory(){
-    var db = firebase.database().ref('chatMessages').child(currentUserKey);
-    console.log(currentUserKey);
+    var db = firebase.database().ref('chatMessages').child(childKey);
+    console.log(childKey);
     //db.remove();
 }
 ///////////////////////////////////////////////////////////////////////
