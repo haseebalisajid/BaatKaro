@@ -299,7 +299,7 @@ function unFriend(){
     db.remove();
     location.reload();
 }
-function unFriend(){
+function DelteAccount(){
     var db = firebase.database().ref('users').child(chatKey);
     db.remove();
     location.reload();
