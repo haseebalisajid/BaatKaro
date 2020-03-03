@@ -344,7 +344,24 @@ function LoadChatList() {
         });
     });
 }
-
+function myFunction() {
+    // Declare variables
+    var input, filter,li, a, i, txtValue;
+    input = document.getElementById('Search');
+    filter = input.value.toUpperCase();
+    li = ul.getElementsByTagName('li');
+  
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      a = li[i].getElementsByTagName("a")[0];
+      txtValue = a.textContent || a.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
 function PopulateFriendList() {
     document.getElementById('lstFriend').innerHTML = `<div class="text-center">
                                                          <span class="spinner-border text-primary mt-5" style="width:7rem;height:7rem"></span>
@@ -354,7 +371,7 @@ function PopulateFriendList() {
     db.on('value', function (users) {
         if (users.hasChildren()) {
             lst = `<li class="list-group-item" style="background-color:#f8f8f8;">
-                            <input id="Search" type="text" placeholder="Search or new chat" class="form-control form-rounded" />
+                            <input id="Search" type="text" onkeyup="myFunction()" placeholder="Search or new chat" class="form-control form-rounded" />
                         </li>`;
         }
         users.forEach(function (data) {
