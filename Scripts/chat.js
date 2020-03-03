@@ -346,11 +346,12 @@ function LoadChatList() {
 }
 function myFunction() {
     // Declare variables
-    var input, filter,li, a, i, txtValue;
+    var input, filter,li, ul,a, i, txtValue;
     input = document.getElementById('Search');
     filter = input.value.toUpperCase();
-    li = ul.getElementsByTagName('li');
     ul = document.getElementById("lstFriend");
+    li = ul.getElementsByTagName('li');
+    
     
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {
