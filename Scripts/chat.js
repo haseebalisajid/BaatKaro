@@ -350,7 +350,8 @@ function myFunction() {
     input = document.getElementById('Search');
     filter = input.value.toUpperCase();
     li = ul.getElementsByTagName('li');
-  
+    ul = document.getElementById("lstFriend");
+    
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {
       a = li[i].getElementsByTagName("a")[0];
