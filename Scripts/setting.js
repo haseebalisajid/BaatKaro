@@ -1,11 +1,7 @@
-let db=firebase.database();
-var user=firebase.auth().currentUser;
-if(user){
-    console.log(user.email);
-}
-else{
-    console.log("na vai");
-}
+let ref = database.ref('/users/' + currentUser.uid).once('value').then(function(snapshot) {
+    let userData = snapshot.val();
+    console.log(userData.email);
+});
 var userName=document.getElementById('name');
 var userStatus=document.getElementById('status');
 function update(){
