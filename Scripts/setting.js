@@ -1,5 +1,5 @@
 let db=firebase.database();
-let userID=db.currentUserKey.uid;
+let userID=firebase.auth().currentUser.uid;
 var userName=document.getElementById('name');
 var userStatus=document.getElementById('status');
 function update(){
@@ -17,6 +17,6 @@ function done(){
         name:userName.value,
         status:userStatus.value
     });
-    console.log(userId.name);
+    console.log(userId.name+" "+userId.name);
     // document.getElementById('Name').innerHTML=currentUserKey.name;
 }
