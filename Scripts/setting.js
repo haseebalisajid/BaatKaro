@@ -1,3 +1,4 @@
+var db=firebase.database().ref('users');
 var userName=document.getElementById('name');
 var userStatus=document.getElementById('status');
 function update(){
@@ -10,9 +11,11 @@ function update(){
     }
 }
 function done(){
+
     firebase.database().ref('users',currentUserKey).set({
         name:userName.value,
         status:userStatus.value
     });
-    document.getElementById('Name').innerHTML=currentUserKey.name;
+    console.log(db.currentUserKey.name);
+    // document.getElementById('Name').innerHTML=currentUserKey.name;
 }
