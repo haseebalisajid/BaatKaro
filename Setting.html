@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link href="css/bootstrap-4.3.1.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/setting.css">
+    <title>Settings</title>
+</head>
+<body>
+    <div class="container mt-4" >
+        <div class="row flex-lg-nowrap">        
+          <div class="col">
+            <div class="row">
+              <div class="col mb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="e-profile">
+                      <div class="row">
+                        <div class="col-12 col-sm-auto mb-3">
+                          <div class="mx-auto" style="width: 140px;">
+                            <div class="d-flex justify-content-center align-items-center rounded">
+                                <img src="images/pp.png" class="rounded-circle" style="width: 120px; height: 120px;">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                          <div class="text-center text-sm-left mb-2 mb-sm-0">
+                            <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap" id="Name">Haseeb Ali</h4>
+                            <p class="mb-0" id="email">alihaseeb714@gmail.com</p>
+                            <div class="mt-2">
+                                <span class="btn btn-primary btn-file">
+                                    <i class="fa fa-fw fa-camera"></i>
+                                    Upload Photo<input type="file" id="file" accept=".png, .jpg, .jpeg">
+                                </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <ul class="nav nav-tabs">
+                        <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
+                      </ul>
+                      <div class="tab-content pt-3">
+                        <div class="tab-pane active">
+                          <form class="form" novalidate="">
+                            <div class="row">
+                              <div class="col">
+                                <div class="row">
+                                  <div class="col">
+                                    <div class="form-group">
+                                      <label>Name</label>
+                                      <input class="form-control"  type="text" id="name" name="name" placeholder="Haseeb Ali" >
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col mb-3">
+                                    <div class="form-group">
+                                      <label>Status</label>
+                                      <input class="form-control" onkeyup="update()" id="status" type="text" placeholder="e.g Buzy">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col d-flex justify-content-end">
+                                <button class="btn btn-primary mr-3" id="save" type="submit" onclick="done()" disabled>Save Changes</button>
+                                <button class="btn btn-primary" type="submit">Back</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script src="Scripts/popper-1.14.7.min.js"></script>
+    <script src="Scripts/bootstrap-4.3.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase.js"></script>
+    <script src="Scripts/firebase.init.js"></script>
+    <script src="Scripts/setting.js"></script>
+</body>
+</html>

@@ -335,7 +335,7 @@ function LoadChatList() {
                                 </div>
                                 <div class="col-md-10" style="cursor:pointer;">
                                     <div class="name">${user.name}</div>
-                                    <div class="under-name">Messages</div>
+                                    <div class="under-name">${user.status}</div>
                                 </div>
                             </div>
                         </li>`;
@@ -344,7 +344,6 @@ function LoadChatList() {
         });
     });
 }
-
 function PopulateFriendList() {
     document.getElementById('lstFriend').innerHTML = `<div class="text-center">
                                                          <span class="spinner-border text-primary mt-5" style="width:7rem;height:7rem"></span>
