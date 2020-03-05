@@ -3,6 +3,9 @@ var user=firebase.auth().currentUser;
 if(user){
     console.log(user.email);
 }
+else{
+    console.log("na vai");
+}
 var userName=document.getElementById('name');
 var userStatus=document.getElementById('status');
 function update(){
