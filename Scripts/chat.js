@@ -437,6 +437,8 @@ function onStateChanged(user) {
                 });
 
             document.getElementById('lnkNewChat').classList.remove('disabled');
+            document.getElementById('lnkSetting').classList.remove('disabled');
+            
             LoadChatList();
         });
     }
@@ -448,6 +450,7 @@ function onStateChanged(user) {
         document.getElementById('lnkSignOut').style = 'display:none';
 
         document.getElementById('lnkNewChat').classList.add('disabled');
+        document.getElementById('lnkSetting').classList.add('disabled');
     }
 }
 
