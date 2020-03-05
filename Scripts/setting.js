@@ -1,4 +1,5 @@
-let id=firebase.auth().currentUser.uid;
+let id=firebase.auth().currentUser;
+console.log(id + "sda");
 let ref = firebase.database().ref('/users/' + id).once('value').then(function(snapshot) {
     let userData = snapshot.val();
     console.log(userData.email);
@@ -13,12 +14,4 @@ function update(){
     else{
         document.getElementById('save').disabled=true;
     }
-}
-function done(){
-
-    firebase.database().ref('users/',userID).set({
-        name:userName.value,
-        status:userStatus.value
-    });
-    // document.getElementById('Name').innerHTML=currentUserKey.name;
 }
