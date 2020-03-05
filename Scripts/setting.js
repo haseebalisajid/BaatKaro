@@ -1,4 +1,4 @@
-let ref = database.ref('/users/' + currentUser.uid).once('value').then(function(snapshot) {
+let ref = firebase.database().ref('/users/' + currentUser.uid).once('value').then(function(snapshot) {
     let userData = snapshot.val();
     console.log(userData.email);
 });
