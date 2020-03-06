@@ -3,7 +3,7 @@ var userEmail;
 
 firebase.auth().onAuthStateChanged(async firebaseUser => {
     if(firebaseUser){
-        console.log(firebaseUser);
+        console.log(firebaseUser.name);
     }
 });
 
