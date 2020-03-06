@@ -4,18 +4,25 @@ var userID="";
 var userPhoto="";
 var userStatus="";
 
-
-
-firebase.auth().onAuthStateChanged(async firebaseUser => {
-    if(firebaseUser){
-        console.log(firebaseUser.email);
-        console.log(firebaseUser.uid);
-        await firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then(res => {
-            let data = res.val();
-            console.log(data);
-        });
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      // User logged in already or has just logged in.
+      console.log(user.uid);
+    } else {
+      // User not logged in or has just logged out.
     }
-});
+  });
+
+// firebase.auth().onAuthStateChanged(async firebaseUser => {
+//     if(firebaseUser){
+//         console.log(firebaseUser.email);
+//         console.log(firebaseUser.uid);
+//         await firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then(res => {
+//             let data = res.val();
+//             console.log(data);
+//         });
+//     }
+// });
 
 
 console.log(userEmail,userName,userID);
