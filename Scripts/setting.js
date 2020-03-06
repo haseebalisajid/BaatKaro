@@ -3,7 +3,7 @@ var userEmail="";
 var userID="";
 var userPhoto="";
 var userStatus="";
-console.log(firebase.database().currentUser);
+console.log(firebase.database().currentUser.name);
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // User logged in already or has just logged in.
