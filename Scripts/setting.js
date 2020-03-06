@@ -2,8 +2,12 @@ var leadsRef = firebase.database().ref('users');
 leadsRef.on('value', function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
       var childData = childSnapshot.val();
-      console.log(childData)
+      console.log(childData)l
     });
+});
+let ref = firebase.database().ref('users/' + currentUser.uid).once('value').then(function(snapshot) {
+    let userData = snapshot.val();
+    console.log(userData);
 });
 
 var userName=document.getElementById('name');
