@@ -1,10 +1,7 @@
+let database =firebase.database();
+let id = firebase.auth().currentUser;
+console.log(id);
 
-let id=firebase.auth().currentUser;
-console.log(id + "sda");
-let ref = firebase.database().ref('users/' + id).once('value').then(function(snapshot) {
-    let userData = snapshot.val();
-    console.log(userData);
-});
 var userName=document.getElementById('name');
 var userStatus=document.getElementById('status');
 function update(){
