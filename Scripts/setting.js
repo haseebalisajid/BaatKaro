@@ -1,9 +1,10 @@
-var leadsRef = firebase.database().ref('users');
-leadsRef.on('value', function(snapshot) {
-    snapshot.forEach(function(childSnapshot) {
-      var childData = childSnapshot.val();
-      console.log(childData);
-    });
+var userName;
+var userEmail;
+
+firebase.auth().onAuthStateChanged(async firebaseUser => {
+    if(firebaseUser){
+        console.log(firebaseUser);
+    }
 });
 
 var userName=document.getElementById('name');
