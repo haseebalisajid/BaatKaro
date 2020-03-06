@@ -1,6 +1,10 @@
-let database =firebase.database();
-let id = firebase.auth().currentUser;
-console.log(id);
+var leadsRef = database.ref('leads');
+leadsRef.on('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+      console.log(childData)
+    });
+});
 
 var userName=document.getElementById('name');
 var userStatus=document.getElementById('status');
