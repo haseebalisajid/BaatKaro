@@ -1,12 +1,17 @@
 var userName;
 var userEmail;
-
+var userID;
+var userPhoto;
+var userStatus;
 firebase.auth().onAuthStateChanged(async firebaseUser => {
     if(firebaseUser){
-        console.log(firebaseUser);
+        userName=firebaseUser.displayName;
+        userEmail=firebaseUser.email;
+        userID=firebaseUser.uid;
     }
 });
 
+console.log(userEmail,userName,userID);
 var userName=document.getElementById('name');
 var userStatus=document.getElementById('status');
 function update(){
