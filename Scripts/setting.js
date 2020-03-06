@@ -6,7 +6,7 @@ var userStatus="";
 
 var leadsRef = firebase.database().ref('users');
 leadsRef.on('value', function(snapshot) {
-    //console.log(snapshot.id);
+    console.log(snapshot.id);
     snapshot.forEach(function(childSnapshot) {
       var childData = childSnapshot.val();
       //console.log(childData);
@@ -25,7 +25,7 @@ leadsRef.on('value', function(snapshot) {
 // });
 
 
-//console.log(userEmail,userName,userID);
+//  console.log(userEmail,userName,userID);
 var userName=document.getElementById('name');
 var userStatus=document.getElementById('status');
 function update(){
