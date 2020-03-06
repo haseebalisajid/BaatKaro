@@ -3,15 +3,14 @@ var userEmail="";
 var userID="";
 var userPhoto="";
 var userStatus="";
-console.log(firebase.database().currentUser.name);
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      // User logged in already or has just logged in.
-      console.log(user.uid);
-    } else {
-      // User not logged in or has just logged out.
-    }
-  });
+
+var leadsRef = database.ref('users');
+leadsRef.on('value', function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+      console.log(childData);
+    });
+});
 
 // firebase.auth().onAuthStateChanged(async firebaseUser => {
 //     if(firebaseUser){
