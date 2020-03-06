@@ -1,4 +1,4 @@
-var leadsRef = database.ref('leads');
+var leadsRef = firebase.database().ref('users');
 leadsRef.on('value', function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
       var childData = childSnapshot.val();
