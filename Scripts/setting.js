@@ -1,16 +1,16 @@
-var userName;
-var userEmail;
-var userID;
-var userPhoto;
-var userStatus;
+var userName="";
+var userEmail="";
+var userID="";
+var userPhoto="";
+var userStatus="";
 firebase.auth().onAuthStateChanged(async firebaseUser => {
     if(firebaseUser){
-        userName=firebaseUser.displayName;
-        userEmail=firebaseUser.email;
-        userID=firebaseUser.uid;
+        await firebase.database().ref(`/saloons/${firebaseUser.uid}`).once('value').then(res => {
+            let data = res.val();
+            console.log(data);
+        });
     }
 });
-
 console.log(userEmail,userName,userID);
 var userName=document.getElementById('name');
 var userStatus=document.getElementById('status');
