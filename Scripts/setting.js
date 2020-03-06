@@ -6,7 +6,7 @@ var userStatus="";
 
 var leadsRef = firebase.database().ref('users');
 leadsRef.on('value', function(snapshot) {
-    console.log(snapshot.val());
+    console.log(snapshot.name);
     snapshot.forEach(function(childSnapshot) {
       var childData = childSnapshot.val();
       console.log(childData);
