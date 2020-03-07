@@ -15,8 +15,7 @@ firebase.auth().onAuthStateChanged(async firebaseUser => {
 
 function setValue(name,status,photo){
     var userName=document.getElementById('name').innerHTML=name
-    var userStatus=document.getElementById('status').innerHTML=status
-    document.getElementById('imgProfile').src = photo
+
 }
 
 function update(){
