@@ -1,4 +1,5 @@
-
+var userName=document.getElementById('Name')
+var userStatus=document.getElementById('Status')
 
 
 
@@ -12,8 +13,8 @@ firebase.auth().onAuthStateChanged(async firebaseUser => {
 });
 
 function setValue(name,status,photo){
-    var userName=document.getElementById('Name').innerHTML=name
-    var userStatus=document.getElementById('Status').innerHTML=status
+    var usrName=document.getElementById('Name').innerHTML=name
+    var usrStatus=document.getElementById('Status').innerHTML=status
     document.getElementById('imgProfile').src = photo
 }
 
