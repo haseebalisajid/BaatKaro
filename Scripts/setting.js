@@ -4,25 +4,20 @@ var userID="";
 var userPhoto="";
 var userStatus="";
 
-var leadsRef = firebase.database().ref('users');
-leadsRef.on('value', function(snapshot) {
-    //console.log(snapshot.id);
-    snapshot.forEach(function(childSnapshot) {
-      var childData = childSnapshot.val();
-      console.log(childData.key);
-    });
-});
-
-// firebase.auth().onAuthStateChanged(async firebaseUser => {
-//     if(firebaseUser){
-//         console.log(firebaseUser.email);
-//         console.log(firebaseUser.uid);
-//         await firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then(res => {
-//             let data = res.val();
-//             console.log(data);
-//         });
-//     }
+// var leadsRef = firebase.database().ref('users');
+// leadsRef.on('value', function(snapshot) {
+//     //console.log(snapshot.id);
+//     snapshot.forEach(function(childSnapshot) {
+//       var childData = childSnapshot.val();
+//       console.log(childData.key);
+//     });
 // });
+
+firebase.auth().onAuthStateChanged(async firebaseUser => {
+    if(firebaseUser){
+        console.log(firebase.auth().currentUser.email);
+    }
+});
 
 
 //  console.log(userEmail,userName,userID);
