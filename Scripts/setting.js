@@ -32,14 +32,14 @@ function update(){
 function changeVal(){
     var Name=document.getElementById('name').value;
     var stat=document.getElementById('getStatus').value;
-    if(Name == null){
+    if(Name == ""){
         firebase.database().ref(`/users/${userId}`).set({
             name:userName,
             Status:stat,
             photoURL:userPot
         })
     }
-    else if(stat==null){
+    else if(stat==""){
         firebase.database().ref(`/users/${userId}`).set({
             name:Name,
             Status:userStatus,
