@@ -7,8 +7,9 @@ firebase.auth().onAuthStateChanged(async firebaseUser => {
     if(firebaseUser){
         await firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then(async res => {
             let data = res.val();
-            console.log(data)
-            console.log(data.photoURL)
+            userName=data.name
+            userPhoto=data.photoURL
+            userStatus=data.Status
         });
     }
 });
