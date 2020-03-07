@@ -15,7 +15,7 @@ var userStatus="";
 
 firebase.auth().onAuthStateChanged(async firebaseUser => {
     if(firebaseUser){
-        console.log(firebase.auth().currentUser.key);
+        console.log(firebase.auth().currentUser);
     }
 });
 
