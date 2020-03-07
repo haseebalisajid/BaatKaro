@@ -412,7 +412,7 @@ function onStateChanged(user) {
             });
 
             if (flag === false) {
-                firebase.database().ref('users').child(user.uid).push(userProfile, callback);
+                firebase.database().ref('users').child(user.uid).push(userProfile);
             }
             else {
                 document.getElementById('imgProfile').src = firebase.auth().currentUser.photoURL;
