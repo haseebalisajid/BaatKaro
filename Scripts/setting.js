@@ -9,7 +9,7 @@ leadsRef.on('value', function(snapshot) {
     //console.log(snapshot.id);
     snapshot.forEach(function(childSnapshot) {
       var childData = childSnapshot.val();
-      console.log(childData.key);
+      console.log(childData);
     });
 });
 
