@@ -16,9 +16,10 @@ var userStatus="";
 firebase.auth().onAuthStateChanged(async firebaseUser => {
     if(firebaseUser){
         console.log(firebase.auth().currentUser.photoURL);
+        document.getElementById('imgProfile').src = firebase.auth().currentUser.photoURL;
     }
 });
-document.getElementById('imgProfile').src = firebase.auth().currentUser.photoURL;
+
 
 //  console.log(userEmail,userName,userID);
 var userName=document.getElementById('name');
