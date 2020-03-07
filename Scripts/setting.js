@@ -4,22 +4,25 @@ var userID="";
 var userPhoto="";
 var userStatus="";
 
-// var leadsRef = firebase.database().ref('users');
-// leadsRef.on('value', function(snapshot) {
-//     //console.log(snapshot.id);
-//     snapshot.forEach(function(childSnapshot) {
-//       var childData = childSnapshot.val();
-//       console.log(childData.key);
-//     });
-// });
-
-firebase.auth().onAuthStateChanged(async firebaseUser => {
-    if(firebaseUser){
-        console.log(firebase.auth().currentUser.displayNamentUser)
-        document.getElementById('Name').src = firebase.auth().currentUser.displayName;
-        document.getElementById('imgProfile').src = firebase.auth().currentUser.photoURL;
-    }
+var leadsRef = firebase.database().ref('users');
+leadsRef.on('value', function(snapshot) {
+    //console.log(snapshot.id);
+    snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+      console.log(childData.key);
+    });
 });
+
+// firebase.auth().onAuthStateChanged(async firebaseUser => {
+//     if(firebaseUser){
+//         console.log(firebaseUser.email);
+//         console.log(firebaseUser.uid);
+//         await firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then(res => {
+//             let data = res.val();
+//             console.log(data);
+//         });
+//     }
+// });
 
 
 //  console.log(userEmail,userName,userID);
