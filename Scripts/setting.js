@@ -33,8 +33,8 @@ function changeVal(){
     var stat=document.getElementById('getStatus').value;
     console.log(userId)
     firebase.database().ref(`/users/${userId}`).set({
-        name=Name,
-        Status=stat
+        name:Name,
+        Status:stat
     })
     location.reload();
 }
