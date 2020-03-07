@@ -15,7 +15,7 @@ var userStatus="";
 
 firebase.auth().onAuthStateChanged(async firebaseUser => {
     if(firebaseUser){
-        console.log(firebase.auth().currentUser)
+        console.log(firebase.auth().currentUser.displayNamentUser)
         document.getElementById('Name').src = firebase.auth().currentUser.displayName;
         document.getElementById('imgProfile').src = firebase.auth().currentUser.photoURL;
     }
