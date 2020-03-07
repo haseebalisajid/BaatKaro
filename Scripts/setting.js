@@ -1,6 +1,4 @@
-var userName="";
-var userPhoto="";
-var userStatus="";
+
 
 
 
@@ -20,11 +18,16 @@ function setValue(name,status,photo){
 }
 
 function update(){
-    console.log(userName.value);
     if(userName.value != "" && userStatus.value != ""){
         document.getElementById('save').disabled=false;
     }
     else{
         document.getElementById('save').disabled=true;
     }
+}
+function changeVal(){
+    var Name=document.getElementById('Name').value;
+    var stat=document.getElementById('getStatus').value;
+    firebase.database().ref(`users/${firebase.auth().uid}`).update({name: Name,Status:stat});
+    location.reload();
 }
