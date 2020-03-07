@@ -4,7 +4,7 @@ var userID="";
 var userPhoto="";
 var userStatus="";
 
-var leadsRef = firebase.database().ref(`users/${firebaseUser.uid}`);
+var leadsRef = firebase.database().ref(`users/${firebase.auth().uid}`);
 leadsRef.once('value', function(snapshot) {
     //console.log(snapshot.id);
     snapshot.forEach(function(childSnapshot) {
