@@ -395,10 +395,11 @@ function onStateChanged(user) {
     if (user) {
         //alert(firebase.auth().currentUser.email + '\n' + firebase.auth().currentUser.displayName);
 
-        var userProfile = { email: '', name: '', photoURL: '' };
+        var userProfile = { email: '', name: '', photoURL: '' ,Status: ''};
         userProfile.email = firebase.auth().currentUser.email;
         userProfile.name = firebase.auth().currentUser.displayName;
         userProfile.photoURL = firebase.auth().currentUser.photoURL;
+        userProfile.Status='Sleeping'
 
         var db = firebase.database().ref('users');
         var flag = false;
