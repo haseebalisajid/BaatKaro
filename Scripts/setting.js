@@ -31,3 +31,6 @@ function changeVal(){
     firebase.database().ref(`users/${firebase.auth().uid}`).update({name: Name,Status:stat});
     location.reload();
 }
+function back(){
+    window.location.href="/main.html"
+}
