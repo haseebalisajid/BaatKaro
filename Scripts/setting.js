@@ -1,10 +1,12 @@
 var userName=document.getElementById('Name')
 var userStatus=document.getElementById('Status')
+var userId=""
 
 
 
 firebase.auth().onAuthStateChanged(async firebaseUser => {
     if(firebaseUser){
+        userId=firebaseUser.uid
         await firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then(res => {
             let data = res.val();
             setValue(data.name,data.Status,data.photoURL)
@@ -29,7 +31,11 @@ function update(){
 function changeVal(){
     var Name=document.getElementById('Name').value;
     var stat=document.getElementById('getStatus').value;
-    firebase.database().ref(`users/${firebase.auth().uid}`).update({name: Name,Status:stat});
+    console.log(userId)
+    firebase.database().ref(`/users/${userId}`).set({
+        name=Name,
+        Status=stat
+    })
     location.reload();
 }
 function back(){
