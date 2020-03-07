@@ -15,7 +15,7 @@ firebase.auth().onAuthStateChanged(async firebaseUser => {
 });
 
 
-//console.log(userName,userPhoto,userStatus);
+console.log(userName,userPhoto,userStatus);
 // var userName=document.getElementById('name');
 // var userStatus=document.getElementById('status');
 // function update(){
