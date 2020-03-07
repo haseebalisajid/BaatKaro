@@ -1,33 +1,27 @@
 var userName="";
-var userEmail="";
-var userID="";
 var userPhoto="";
 var userStatus="";
 
-var leadsRef = firebase.database().ref(`users/${firebase.auth().uid}`);
-leadsRef.once('value', function(snapshot) {
-    //console.log(snapshot.id);
-    snapshot.forEach(function(childSnapshot) {
-      var childData = childSnapshot.val();
-      console.log(childData);
-    });
+
+
+firebase.auth().onAuthStateChanged(async firebaseUser => {
+    if(firebaseUser){
+        await firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then(res => {
+            let data = res.val();
+            userName=data.name
+            userStatus=data.Status
+            userPhoto=data.photoURL
+            setValue(userName,userStatus,userPhoto)
+        });
+    }
 });
 
-// firebase.auth().onAuthStateChanged(async firebaseUser => {
-//     if(firebaseUser){
-//         console.log(firebaseUser.email);
-//         console.log(firebaseUser.uid);
-//         await firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then(res => {
-//             let data = res.val();
-//             console.log(data);
-//         });
-//     }
-// });
+function setValue(name,status,photo){
+    var userName=document.getElementById('name').innerHTML=name
+    var userStatus=document.getElementById('status').innerHTML=status
+    document.getElementById('imgProfile').src = photo
+}
 
-
-//  console.log(userEmail,userName,userID);
-var userName=document.getElementById('name');
-var userStatus=document.getElementById('status');
 function update(){
     console.log(userName.value);
     if(userName.value != "" && userStatus.value != ""){
