@@ -19,7 +19,7 @@ function setValue(name,status,photo){
     var usrStatus=document.getElementById('Status').innerHTML=status
     document.getElementById('imgProfile').src = photo
 }
-
+console.log(userId)
 function update(){
     if(userName.value != "" && userStatus.value != ""){
         document.getElementById('save').disabled=false;
@@ -29,9 +29,8 @@ function update(){
     }
 }
 function changeVal(){
-    var Name=document.getElementById('Name').value;
+    var Name=document.getElementById('name').value;
     var stat=document.getElementById('getStatus').value;
-    console.log(userId)
     firebase.database().ref(`/users/${userId}`).set({
         name:Name,
         Status:stat
