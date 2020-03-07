@@ -3,9 +3,9 @@ var userPhoto;
 var userStatus;
 
 
-firebase.auth().onAuthStateChanged(async firebaseUser => {
+firebase.auth().onAuthStateChanged( firebaseUser => {
     if(firebaseUser){
-        await firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then(async res => {
+        firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then( res => {
             let data = res.val();
             console.log(data.name,data.Status)
             userName=data.name
