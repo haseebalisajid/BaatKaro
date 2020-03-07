@@ -35,7 +35,7 @@ function changeVal(){
         name:Name,
         Status:stat
     })
-    location.reload();
+    
 }
 function back(){
     window.location.href="/main.html"
