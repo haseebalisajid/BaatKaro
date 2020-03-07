@@ -18,7 +18,7 @@ firebase.auth().onAuthStateChanged(async firebaseUser => {
         console.log(firebase.auth().currentUser);
     }
 });
-
+document.getElementById('imgProfile').src = firebase.auth().currentUser.photoURL;
 
 //  console.log(userEmail,userName,userID);
 var userName=document.getElementById('name');
