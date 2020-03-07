@@ -2,11 +2,10 @@ var userName=document.getElementById('Name')
 var userStatus=document.getElementById('Status')
 var userId=""
 
-
+console.log(firebase.auth().currentUser.photoURL)
 
 firebase.auth().onAuthStateChanged(async firebaseUser => {
     if(firebaseUser){
-        userId=firebaseUser.uid
         await firebase.database().ref(`/users/${firebaseUser.uid}`).once('value').then(res => {
             let data = res.val();
             setValue(data.name,data.Status,data.photoURL)
