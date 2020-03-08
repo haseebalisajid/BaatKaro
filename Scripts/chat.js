@@ -139,8 +139,8 @@ function StartChat(friendKey, friendName, friendPhoto) {
         //display friend name and photo
         document.getElementById('divChatName').innerHTML = friendName;
         document.getElementById('imgChat').src = friendPhoto;
-
-        document.getElementById('messages').innerHTML = user.Status;
+        document.getElementById('divChatSeen').innerHTML=user.Status;
+        document.getElementById('messages').innerHTML = '';
 
         document.getElementById('txtMessage').value = '';
         document.getElementById('txtMessage').focus();
