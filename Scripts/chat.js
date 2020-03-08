@@ -29,8 +29,8 @@ let recorder;
 var timeout;
 
 function record(control) {
-    let device = navigator.mediaDevices.getUserMedia({ audio: true });
-    device.then(stream => {
+    let device = navigator.mediaDevices.getUserMedia({ async audio: true });
+    await device.then(stream => {
         if (recorder === undefined) {
             recorder = new MediaRecorder(stream);
             recorder.ondataavailable = e => {
