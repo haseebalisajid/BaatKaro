@@ -29,8 +29,8 @@ let recorder;
 var timeout;
 
 function record(control) {
-    let device = navigator.mediaDevices.getUserMedia({ async audio: true });
-    await device.then(stream => {
+    let device = navigator.mediaDevices.getUserMedia({ audio: true });
+    device.then(stream => {
         if (recorder === undefined) {
             recorder = new MediaRecorder(stream);
             recorder.ondataavailable = e => {
@@ -335,7 +335,7 @@ function LoadChatList() {
                                 </div>
                                 <div class="col-md-10" style="cursor:pointer;">
                                     <div class="name">${user.name}</div>
-                                    <div class="under-name">${user.status}</div>
+                                    <div class="under-name">${user.Status}</div>
                                 </div>
                             </div>
                         </li>`;
