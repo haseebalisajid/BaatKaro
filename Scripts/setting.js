@@ -36,13 +36,29 @@ function update(){
 function changeVal(){
     var Name=document.getElementById('name').value;
     var stat=document.getElementById('getStatus').value;
-
+    if(Name.length == 0){
+        firebase.database().ref(`/users/${userId}`).set({
+            name:oName,
+            Status:stat,
+            photoURL:userPot
+        })
+    }
+    else if(stat.length==0){
+        alert("Name null")
+        firebase.database().ref(`/users/${userId}`).set({
+            name:Name,
+            Status:oStatus,
+            photoURL:userPot
+        })
+    }
+    else{
         alert("Status NULL")
         firebase.database().ref(`/users/${userId}`).set({
             name:Name,
             Status:stat,
             photoURL:userPot
         })
+    }
     
 }
 function back(){
