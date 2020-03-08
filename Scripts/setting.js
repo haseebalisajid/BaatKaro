@@ -1,5 +1,7 @@
 var userName=document.getElementById('name')
-var userStatus=document.getElementById('Status')
+var userStatus=document.getElementById('getStatus')
+var oName=""
+var oStatus=""
 var userId=""
 var userPot=""
 
@@ -17,6 +19,8 @@ firebase.auth().onAuthStateChanged(async firebaseUser => {
 function setValue(name,status,photo){
     var usrName=document.getElementById('Name').innerHTML=name
     var usrStatus=document.getElementById('Status').innerHTML=status
+    oName=name;
+    oStatus=status
     document.getElementById('imgProfile').src = photo
     return photo
 }
@@ -34,7 +38,7 @@ function changeVal(){
     var stat=document.getElementById('getStatus').value;
     if(Name.length == 0){
         firebase.database().ref(`/users/${userId}`).set({
-            name:userName,
+            name:oName,
             Status:stat,
             photoURL:userPot
         })
@@ -42,7 +46,7 @@ function changeVal(){
     else if(stat.length==0){
         firebase.database().ref(`/users/${userId}`).set({
             name:Name,
-            Status:userStatus,
+            Status:oStatus,
             photoURL:userPot
         })
     }
