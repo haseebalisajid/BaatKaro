@@ -24,7 +24,6 @@ function setValue(name,status,photo){
     document.getElementById('imgProfile').src = photo
     return photo
 }
-console.log(userId)
 function update(){
     if(userName.value != "" || userStatus.value != ""){
         document.getElementById('save').disabled=false;
@@ -61,5 +60,5 @@ function changeVal(){
     
 }
 function back(){
-    window.location.href="/main.html"
+    location.href="main.html"
 }
