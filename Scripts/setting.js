@@ -26,7 +26,7 @@ function setValue(name,status,photo){
 }
 console.log(userId)
 function update(){
-    if(userName.value != "" && userStatus.value != ""){
+    if(userName.value != "" || userStatus.value != ""){
         document.getElementById('save').disabled=false;
     }
     else{
