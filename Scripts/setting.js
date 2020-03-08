@@ -60,5 +60,5 @@ function changeVal(){
     
 }
 function back(){
-    window.location.location="/main.html";
+    document.location.href="/main.html",true;
 }
