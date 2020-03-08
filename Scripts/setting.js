@@ -74,4 +74,4 @@ function uploadFile(){
        alert("File Uploaded")
        console.log('Uploaded a blob or file!');
     });
-  }
+}
