@@ -62,7 +62,7 @@ function changeVal(){
 function uploadFile(){
       
 
-    var storageRef = firebase.storage().ref();
+    var storageRef = firebase.storage().ref("DP's");
     
     var file = document.getElementById("file").files[0];
     console.log(file);
