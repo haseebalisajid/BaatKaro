@@ -59,6 +59,19 @@ function changeVal(){
     }
     
 }
-function back(){
-    document.location.href="/main.html",true;
-}
+function uploadFile(){
+      
+
+    var storageRef = firebase.storage().ref();
+    
+    var file = document.getElementById("file").files[0];
+    console.log(file);
+    
+    var thisRef = storageRef.child(file.name);
+
+
+    thisRef.put(file).then(function(snapshot) {
+       alert("File Uploaded")
+       console.log('Uploaded a blob or file!');
+    });
+  }
