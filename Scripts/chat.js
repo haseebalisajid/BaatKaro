@@ -414,11 +414,12 @@ function onStateChanged(user) {
 
             if (flag === false) {
                 firebase.database().ref('users').child(user.uid).set(userProfile, callback);
+                document.getElementById('ss').style = 'display:none';
             }
             else {
                 document.getElementById('imgProfile').src = firebase.auth().currentUser.photoURL;
                 document.getElementById('imgProfile').title = firebase.auth().currentUser.displayName;
-
+                document.getElementById('ss').style = 'display:none';
                 document.getElementById('lnkSignIn').style = 'display:none';
                 document.getElementById('lnkSignOut').style = '';
             }
