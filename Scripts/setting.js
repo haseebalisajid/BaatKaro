@@ -1,4 +1,4 @@
-var userName=document.getElementById('Name')
+var userName=document.getElementById('name')
 var userStatus=document.getElementById('Status')
 var userId=""
 var userPot=""
@@ -32,14 +32,14 @@ function update(){
 function changeVal(){
     var Name=document.getElementById('name').value;
     var stat=document.getElementById('getStatus').value;
-    if(Name === ""){
+    if(Name.length == 0){
         firebase.database().ref(`/users/${userId}`).set({
             name:userName,
             Status:stat,
             photoURL:userPot
         })
     }
-    else if(stat===""){
+    else if(stat.length==0){
         firebase.database().ref(`/users/${userId}`).set({
             name:Name,
             Status:userStatus,
