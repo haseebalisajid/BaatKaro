@@ -44,7 +44,6 @@ function changeVal(){
         })
     }
     else if(stat.length==0){
-        alert("Name null")
         firebase.database().ref(`/users/${userId}`).set({
             name:Name,
             Status:oStatus,
@@ -52,7 +51,7 @@ function changeVal(){
         })
     }
     else{
-        alert("Status NULL")
+        
         firebase.database().ref(`/users/${userId}`).set({
             name:Name,
             Status:stat,
