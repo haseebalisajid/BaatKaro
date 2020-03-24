@@ -233,9 +233,9 @@ function SendMessage() {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': 'key=AIzaSyAdQ2SoOBYFpskVQOk2WlJI23rM0jOcx1k'
-                        },
+                    },
                     data: JSON.stringify({
-                        'to': data.val().token_id, 'data': { 'message': chatMessage.msg.substring(0, 30) + '...', 'icon': firebase.auth().currentUser.photoURL,'name':firebase.auth().currentUser.name }
+                        'to': data.val().token_id, 'data': { 'message': chatMessage.msg.substring(0, 30) + '...', 'icon': firebase.auth().currentUser.photoURL, 'name': firebase.auth().currentUser.name }
                     }),
                     success: function (response) {
                     },
@@ -287,23 +287,23 @@ function SendImage(event) {
         }
     }
 }
-function clearChatHistory(){
+function clearChatHistory() {
     var db = firebase.database().ref('chatMessages').child(chatKey);
     db.remove();
     location.reload();
 }
-function unFriend(){
+function unFriend() {
     var db = firebase.database().ref('friend_list').child(chatKey);
     clearChatHistory();
     db.remove();
     location.reload();
 }
-function DelteAccount(){
+function DelteAccount() {
     var db = firebase.database().ref('users').child(chatKey);
     db.remove();
     location.reload();
 }
-function loading(){
+function loading() {
     alert("This feature is not available Right now");
 }
 ///////////////////////////////////////////////////////////////////////
@@ -344,8 +344,8 @@ function LoadChatList() {
         });
     });
 }
-function PopulateFriendList() {
-    document.getElementById('lstFriend').innerHTML = `<div class="text-center">
+function PopulateUserList() {
+    document.getElementById('lstUsers').innerHTML = `<div class="text-center">
                                                          <span class="spinner-border text-primary mt-5" style="width:7rem;height:7rem"></span>
                                                      </div>`;
     var db = firebase.database().ref('users');
@@ -365,14 +365,16 @@ function PopulateFriendList() {
                                     <img src="${user.photoURL}" class="rounded-circle friend-pic" />
                                 </div>
                                 <div class="col-md-10" style="cursor:pointer;">
-                                    <div class="name">${user.name}</div>
+                                    <div class="name">${user.name}
+                                        <button class="btn btn-sm btn-primary"><i class="fas fa-user-plus"></i>Send Request</button>
+                                    </div>
                                 </div>
                             </div>
                         </li>`;
             }
         });
 
-        document.getElementById('lstFriend').innerHTML = lst;
+        document.getElementById('lstUsers').innerHTML = lst;
     });
 
 }
@@ -395,11 +397,11 @@ function onStateChanged(user) {
     if (user) {
         //alert(firebase.auth().currentUser.email + '\n' + firebase.auth().currentUser.displayName);
 
-        var userProfile = { email: '', name: '', photoURL: '' ,Status: ''};
+        var userProfile = { email: '', name: '', photoURL: '', Status: '' };
         userProfile.email = firebase.auth().currentUser.email;
         userProfile.name = firebase.auth().currentUser.displayName;
         userProfile.photoURL = firebase.auth().currentUser.photoURL;
-        userProfile.Status="Hey There, i'm using Baat Karo";
+        userProfile.Status = "Hey There, i'm using Baat Karo";
 
         var db = firebase.database().ref('users');
         var flag = false;
@@ -440,7 +442,7 @@ function onStateChanged(user) {
 
             document.getElementById('lnkNewChat').classList.remove('disabled');
             document.getElementById('lnkSetting').classList.remove('disabled');
-            
+
             LoadChatList();
         });
     }

@@ -29,7 +29,7 @@
                                         <i class="fas fa-ellipsis-v icon" style="cursor:pointer;"></i>
                                     </span>
                                     <div class="dropdown-menu">
-                                        <a href="#" class="dropdown-item" id="lnkNewChat" onclick="PopulateFriendList()" data-toggle="modal" data-target="#modalFriendList">New Chat</a>
+                                        <a href="#" class="dropdown-item" id="lnkNewChat" onclick="PopulateUserList()" data-toggle="modal" data-target="#modalUserList">All Users</a>
                                         <a href="#" id="lnkSignIn" onclick="signIn()" class="dropdown-item">Sign In</a>
                                         <a href="about.html"  class="dropdown-item">About Team</a>
                                         <a href="Setting.html"  id="lnkSetting" class="dropdown-item">Setting</a>
@@ -46,6 +46,19 @@
                                                         <span class="close" data-dismiss="modal" style="cursor:pointer;">&times;</span>
                                                     </div>
                                                     <ul class="list-group list-group-flush" id="lstFriend"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="modalUserList">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        User List
+                                                        <span class="close" data-dismiss="modal" style="cursor:pointer;">&times;</span>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush" id="lstUsers"></ul>
                                                 </div>
                                             </div>
                                         </div>
