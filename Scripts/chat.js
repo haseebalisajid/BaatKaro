@@ -359,14 +359,14 @@ function PopulateUserList() {
         users.forEach(function (data) {
             var user = data.val();
             if (user.email !== firebase.auth().currentUser.email) {
-                lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" onclick="StartChat('${data.key}', '${user.name}', '${user.photoURL}')">
+                lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
                             <div class="row">
                                 <div class="col-md-2">
                                     <img src="${user.photoURL}" class="rounded-circle friend-pic" />
                                 </div>
                                 <div class="col-md-10" style="cursor:pointer;">
                                     <div class="name">${user.name}
-                                        <button class="btn btn-sm btn-primary" style="float:right;"><i class="fas fa-user-plus"></i>Send Request</button>
+                                        <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" style="float:right;"><i class="fas fa-user-plus"></i>Send Request</button>
                                     </div>
                                 </div>
                             </div>
@@ -377,6 +377,23 @@ function PopulateUserList() {
         document.getElementById('lstUsers').innerHTML = lst;
     });
 
+}
+function sendRequest(key){
+    let notification = {
+        sendTo:key,
+        sendFrom:currentUserKey,
+        name:firebase.auth().currentUser.displayName,
+        photo:firebase.auth().currentUser.photoURL,
+        dateTime:new Date.toLocaleString()
+    } 
+    firebase.database.ref('Notification').push(notification,function(error){
+        if(error){
+            alert(error)
+        }
+        else{
+            
+        }
+    })
 }
 function PopulateFriendList() {
     document.getElementById('lstFriend').innerHTML = `<div class="text-center">
