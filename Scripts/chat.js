@@ -378,6 +378,15 @@ function PopulateUserList() {
     });
 
 }
+
+function notificationCount(){
+    let db=firebase.database().ref('notification');
+
+    db.orderByChild('sendTo').equalTo(currentUserKey).on('value',function(noti){
+        document.getElementById('notification').innerHTML=noti.numChildren();
+    })
+}
+
 function sendRequest(key){
     let notification = {
         sendTo:key,
@@ -386,7 +395,7 @@ function sendRequest(key){
         photo:firebase.auth().currentUser.photoURL,
         dateTime:new Date().toLocaleString()
     } 
-    firebase.database().ref('Notification').set(notification,function(error){
+    firebase.database().ref('notification').set(notification,function(error){
         if(error){
             alert(error)
         }
@@ -492,6 +501,7 @@ function onStateChanged(user) {
             document.getElementById('lnkSetting').classList.remove('disabled');
 
             LoadChatList();
+            notificationCount();
         });
     }
     else {
