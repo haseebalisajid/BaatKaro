@@ -493,7 +493,7 @@ function Accept(key){
                         console.log(error)
                     }
                     else{
-                        //daaa
+                        LoadChatList() 
                     }
                 })
             }
