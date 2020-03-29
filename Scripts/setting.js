@@ -62,16 +62,21 @@ function changeVal(){
 function uploadFile(){
       
 
-    var storageRef = firebase.storage().ref("DP's");
+    var storageRef = firebase.storage().ref();
     
-    var file = document.getElementById("file").files[0];
-    console.log(file);
-    
-    var thisRef = storageRef.child(file.name);
+    var file = document.querySelector("#file").files[0];
 
+    const name=file.name
 
-    thisRef.put(file).then(function(snapshot) {
-       alert("File Uploaded")
-       console.log('Uploaded a blob or file!');
-    });
+    const metaData={
+        contentType:file.type
+    }
+
+    const task=ref.child(name).put(file,metaData)
+    task.then(snapshot => snapshot.ref.getDownloadURL())
+    .then(url =>{
+        console.log(url)
+        const image=document.querySelector('#imgProfile')
+        image.src=url
+    })
 }
