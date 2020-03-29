@@ -61,8 +61,11 @@ function changeVal(){
     
 }
 function uploadFile(){
-    var Name=document.getElementById('name').value;
-    var stat=document.getElementById('getStatus').value;
+    firebase.database().ref(`/users/${userId}`).once('value').then(res => {
+        var data = res.val();
+    })
+    var Name=data.name;
+    var stat=data.status
     var ref = firebase.storage().ref();
     
     var file = document.querySelector("#file").files[0];
