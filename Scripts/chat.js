@@ -413,7 +413,8 @@ function sendRequest(key){
         sendFrom:currentUserKey,
         name:firebase.auth().currentUser.displayName,
         photo:firebase.auth().currentUser.photoURL,
-        dateTime:new Date().toLocaleString()
+        dateTime:new Date().toLocaleString(),
+        status="Pending"
     } 
     firebase.database().ref('notification').push(notification,function(error){
         if(error){
@@ -439,20 +440,21 @@ function PopulateNotifications(){
             }
             users.forEach(function (data) {
                 var user = data.val();
-                user.email !== firebase.auth().currentUser.email
-                lst += `<li class="list-group-item list-group-item-action">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="${user.photo}" class="rounded-circle friend-pic" />
-                                </div>
-                                <div class="col-md-10" style="cursor:pointer;">
-                                    <div class="name">${user.name}
-                                        <button onclick="Reject('${data.key}')" class="btn btn-sm btn-danger" style="float:right;margin-left:1%;"><i class="fas fa-user-times"></i> Reject</button>
-                                        <button onclick="Accept()" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-user-check"></i> Accept</button>
-                                    </div>
+                if(user.status === 'Pending'){
+                    lst += `<li class="list-group-item list-group-item-action">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="${user.photo}" class="rounded-circle friend-pic" />
+                            </div>
+                            <div class="col-md-10" style="cursor:pointer;">
+                                <div class="name">${user.name}
+                                    <button onclick="Reject('${data.key}')" class="btn btn-sm btn-danger" style="float:right;margin-left:1%;"><i class="fas fa-user-times"></i> Reject</button>
+                                    <button onclick="Accept()" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-user-check"></i> Accept</button>
                                 </div>
                             </div>
-                        </li>`;
+                        </div>
+                    </li>`;
+                }
             });
 
             document.getElementById('lstNotification').innerHTML = lst;
@@ -465,7 +467,10 @@ function Reject(key){
         obj.status='Reject';
         firebase.database().ref('notification').child(key).update(obj,function(error){
             if(error){
-                alert(error)
+                console.log(error)
+            }
+            else{
+                PopulateNotifications();
             }
         })
     })
