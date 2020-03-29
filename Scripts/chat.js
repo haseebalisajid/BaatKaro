@@ -450,7 +450,7 @@ function PopulateNotifications(){
                             <div class="col-md-10" style="cursor:pointer;">
                                 <div class="name">${user.name}
                                     <button onclick="Reject('${data.key}')" class="btn btn-sm btn-danger" style="float:right;margin-left:1%;"><i class="fas fa-user-times"></i> Reject</button>
-                                    <button onclick="Accept()" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-user-check"></i> Accept</button>
+                                    <button onclick="Accept('${data.key}')" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-user-check"></i> Accept</button>
                                 </div>
                             </div>
                         </div>
@@ -476,6 +476,31 @@ function Reject(key){
         })
     })
 }
+
+function Accept(key){
+    let db=firebase.database().ref('notification').child(key).once('value',function(noti){
+        var obj=noti.val();
+        obj.status='Reject';
+        firebase.database().ref('notification').child(key).update(obj,function(error){
+            if(error){
+                console.log(error)
+            }
+            else{
+                PopulateNotifications();
+                var friendList = { friendId: obj.sendFrom, userId: obj.sendTo };
+                firebase.database().ref('friend_list').set(friendList, function(error){
+                    if(error){
+                        console.log(error)
+                    }
+                    else{
+                        //daaa
+                    }
+                })
+            }
+        })
+    })
+}   
+
 // function PopulateFriendList() {
 //     document.getElementById('lstFriend').innerHTML = `<div class="text-center">
 //                                                          <span class="spinner-border text-primary mt-5" style="width:7rem;height:7rem"></span>
