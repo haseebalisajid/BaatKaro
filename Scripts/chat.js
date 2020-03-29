@@ -395,7 +395,7 @@ function PopulateUserList() {
                                 document.getElementById('lstUsers').innerHTML += lst; 
                             }
                             else{
-                                    lst = `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
+                                lst = `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
                                     <div class="row">
                                         <div class="col-md-2">
                                             <img src="${user.photoURL}" class="rounded-circle friend-pic" />
@@ -412,6 +412,21 @@ function PopulateUserList() {
                         })
                     }
                 })
+            }
+            else{
+                lst = `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                        </div>
+                        <div class="col-md-10" style="cursor:pointer;">
+                            <div class="name">${user.name}
+                                <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>`;
+                document.getElementById('lstUsers').innerHTML += lst;
             }
         });
     });
