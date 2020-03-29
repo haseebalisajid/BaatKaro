@@ -459,6 +459,18 @@ function PopulateNotifications(){
         });
 }
 
+function Reject(key){
+    let db=firebase.database().ref('notification').child(key).once('value',function(noti){
+        let obj=noti.val();
+        obj.status='Reject';
+        firebase.database().ref('notification').child(key).update(obj,fucntion(error) {
+            if(error){
+                alert(error);
+            }
+
+        })
+    })
+}
 // function PopulateFriendList() {
 //     document.getElementById('lstFriend').innerHTML = `<div class="text-center">
 //                                                          <span class="spinner-border text-primary mt-5" style="width:7rem;height:7rem"></span>
