@@ -335,7 +335,7 @@ function LoadChatList() {
                                 </div>
                                 <div class="col-md-10" style="cursor:pointer;">
                                     <div class="name">${user.name}</div>
-                                    <div class="under-name">${user.Status}</div>
+                                    // <div class="under-name">${user.Status}</div>
                                 </div>
                             </div>
                         </li>`;
@@ -592,18 +592,14 @@ function onStateChanged(user) {
                 document.getElementById('ss').style = 'display:none';
             }
             else {
-                firebase.database().ref(`/users/${user.uid}`).once('value').then(res => {
-                    let data = res.val();
-                    document.getElementById('imgProfile').src = data.photoURL;
-                    document.getElementById('imgProfile').data.name;
-                    document.getElementById('ss').style = 'display:none';
-                    document.getElementById('lnkSignIn').style = 'display:none';
-                    document.getElementById('lnkSignOut').style = '';
-                })
+                document.getElementById('imgProfile').src = firebase.auth().currentUser.photoURL;
+                document.getElementById('imgProfile').title = firebase.auth().currentUser.displayName;
+                document.getElementById('ss').style = 'display:none';
+                document.getElementById('lnkSignIn').style = 'display:none';
+                document.getElementById('lnkSignOut').style = '';
             }
 
-
-            // const messaging = firebase.messaging();
+            const messaging = firebase.messaging();
 
             // navigator.serviceWorker.register('../messaging/firebase-messaging-sw.js')
             //     .then((registration) => {
