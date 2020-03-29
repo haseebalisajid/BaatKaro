@@ -613,7 +613,7 @@ function onStateChanged(user) {
             //         })
             //     });
 
-            document.getElementById('lnkNewChat').classList.remove('disabled');
+            // document.getElementById('lnkNewChat').classList.remove('disabled');
             document.getElementById('lnkSetting').classList.remove('disabled');
 
             LoadChatList();
