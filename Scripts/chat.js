@@ -627,7 +627,7 @@ function onStateChanged(user) {
         document.getElementById('lnkSignIn').style = '';
         document.getElementById('lnkSignOut').style = 'display:none';
 
-        document.getElementById('lnkNewChat').classList.add('disabled');
+        // document.getElementById('lnkNewChat').classList.add('disabled');
         document.getElementById('lnkSetting').classList.add('disabled');
     }
 }
