@@ -363,7 +363,7 @@ function PopulateUserList() {
             if (user.email !== firebase.auth().currentUser.email) {
                 dbNoti.orderByChild('sendTo').equalTo(data.key).on('value',function(noti){
                     if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
-                        lst = `<li class="list-group-item list-group-item-action">
+                        lst += `<li class="list-group-item list-group-item-action">
                             <div class="row">
                                 <div class="col-md-2">
                                     <img src="${user.photoURL}" class="rounded-circle friend-pic" />
@@ -375,12 +375,12 @@ function PopulateUserList() {
                                 </div>
                             </div>
                         </li>`;
-                        document.getElementById('lstUsers').innerHTML += lst;
+                        document.getElementById('lstUsers').innerHTML = lst;
                     }
                     else{
                         dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
                             if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
-                                lst = `<li class="list-group-item list-group-item-action">
+                                lst += `<li class="list-group-item list-group-item-action">
                                     <div class="row">
                                         <div class="col-md-2">
                                             <img src="${user.photoURL}" class="rounded-circle friend-pic" />
@@ -392,10 +392,10 @@ function PopulateUserList() {
                                         </div>
                                     </div>
                                 </li>`;
-                                document.getElementById('lstUsers').innerHTML += lst; 
+                                document.getElementById('lstUsers').innerHTML = lst; 
                             }
                             else{
-                                lst = `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
+                                lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
                                     <div class="row">
                                         <div class="col-md-2">
                                             <img src="${user.photoURL}" class="rounded-circle friend-pic" />
@@ -407,7 +407,7 @@ function PopulateUserList() {
                                         </div>
                                     </div>
                                 </li>`;
-                                document.getElementById('lstUsers').innerHTML += lst;
+                                document.getElementById('lstUsers').innerHTML = lst;
                             }
                         })
                     }
