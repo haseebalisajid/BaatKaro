@@ -370,7 +370,7 @@ function PopulateUserList() {
                                 </div>
                                 <div class="col-md-10" style="cursor:pointer;">
                                     <div class="name">${user.name}
-                                        <button class="btn btn-sm btn-default"  style="float:right" ><i class="fas fa-user-plus"></i> Sent</button>
+                                        <button class="btn btn-sm btn-default"  id="Sta" style="float:right" ><i class="fas fa-user-plus"></i> Sent</button>
                                     </div>
                                 </div>
                             </div>
@@ -387,7 +387,7 @@ function PopulateUserList() {
                                         </div>
                                         <div class="col-md-10" style="cursor:pointer;">
                                             <div class="name">${user.name}
-                                                <button class="btn btn-sm btn-default"  style="float:right" ><i class="fas fa-user-plus"></i> Pending</button>
+                                                <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Pending</button>
                                             </div>
                                         </div>
                                     </div>
@@ -518,6 +518,7 @@ function Accept(key){
             }
         })
     })
+    document.getElementById('Sta').innerHTML=' Friend'
 }   
 
 function PopulateFriendList() {
