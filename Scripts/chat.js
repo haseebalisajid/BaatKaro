@@ -409,7 +409,7 @@ function PopulateUserList() {
                                 </li>`;
                                 document.getElementById('lstUsers').innerHTML += lst;
                             }
-                        }
+                        })
                     }
                 })
             }
