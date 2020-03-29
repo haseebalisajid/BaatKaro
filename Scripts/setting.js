@@ -76,6 +76,9 @@ function uploadFile(){
     task.then(snapshot => snapshot.ref.getDownloadURL())
     .then(url =>{
         console.log(url)
+        firebase.database().ref(`/users/${userId}`).set({
+            photoURL:url
+        })
         const image=document.querySelector('#imgProfile')
         image.src=url
     })
