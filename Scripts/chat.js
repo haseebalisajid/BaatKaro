@@ -507,6 +507,7 @@ function Accept(key){
             else{
                 PopulateNotifications();
                 var friendList = { friendId: obj.sendFrom, userId: obj.sendTo };
+                document.getElementById('Sta').innerHTML=' Friend';
                 firebase.database().ref('friend_list').push(friendList, function(error){
                     if(error){
                         console.log(error)
