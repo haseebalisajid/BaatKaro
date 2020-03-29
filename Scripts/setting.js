@@ -51,6 +51,7 @@ function changeVal(){
         })
     }
     else{
+        
         firebase.database().ref(`/users/${userId}`).set({
             name:Name,
             Status:stat,
@@ -62,6 +63,9 @@ function changeVal(){
 function uploadFile(){
     var Name=document.getElementById('name').value;
     var stat=document.getElementById('getStatus').value;
+    let db=firebase.database().ref(`/users/${userId}`)
+    let data=db.val();
+    var email=data.email;
     var ref = firebase.storage().ref();
     
     var file = document.querySelector("#file").files[0];
@@ -76,11 +80,12 @@ function uploadFile(){
     task.then(snapshot => snapshot.ref.getDownloadURL())
     .then(url =>{
         console.log(url)
-        firebase.database().ref(`/users/${userId}`).update({
+        firebase.database().ref(`/users/${userId}`).set({
+            name:Name,
+            Status:stat,
             photoURL:url
         })
         const image=document.querySelector('#imgProfile')
         image.src=url
-        document.getElementById('save').disabled=false;
     })
 }
