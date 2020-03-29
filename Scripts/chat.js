@@ -599,7 +599,7 @@ function onStateChanged(user) {
                     document.getElementById('ss').style = 'display:none';
                     document.getElementById('lnkSignIn').style = 'display:none';
                     document.getElementById('lnkSignOut').style = '';
-                }
+                })
             }
 
 
