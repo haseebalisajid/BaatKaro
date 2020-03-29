@@ -463,11 +463,10 @@ function Reject(key){
     let db=firebase.database().ref('notification').child(key).once('value',function(noti){
         let obj=noti.val();
         obj.status='Reject';
-        firebase.database().ref('notification').child(key).update(obj,fucntion(error) {
+        firebase.database().ref('notification').child(key).update(obj,function(error){
             if(error){
-                alert(error);
+                alert(error)
             }
-
         })
     })
 }
