@@ -497,13 +497,6 @@ function Reject(key){
 }
 
 function Accept(key){
-    var element=document.querySelector('#Sta')
-    if(element){
-        element.textContent=' Friend';
-    }
-    else{
-        console.log("error")
-    }
     let db=firebase.database().ref('notification').child(key).once('value',function(noti){
         var obj=noti.val();
         obj.status='Accept';
@@ -525,7 +518,6 @@ function Accept(key){
             }
         })
     })
-    document.getElementById('Sta').innerHTML=' Friend'
 }   
 
 function PopulateFriendList() {
