@@ -374,7 +374,7 @@ function PopulateUserList() {
             }
         });
 
-        document.getElementById('lstFriend').innerHTML = lst;
+        document.getElementById('lstUsers').innerHTML = lst;
     });
 
 }
@@ -386,7 +386,7 @@ function sendRequest(key){
         photo:firebase.auth().currentUser.photoURL,
         dateTime:new Date.toLocaleString()
     } 
-    firebase.database.ref('Notification').push(notification,function(error){
+    firebase.database.ref('Notification').set(notification,function(error){
         if(error){
             alert(error)
         }
