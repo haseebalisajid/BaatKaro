@@ -397,7 +397,7 @@ function sendRequest(key){
         photo:firebase.auth().currentUser.photoURL,
         dateTime:new Date().toLocaleString()
     } 
-    firebase.database().ref('notification').set(notification,function(error){
+    firebase.database().ref('notification').push(notification,function(error){
         if(error){
             alert(error)
         }
