@@ -424,6 +424,38 @@ function sendRequest(key){
         }
     })
 }
+
+function PopulateNotifications(){
+        document.getElementById('lstNotification').innerHTML = `<div class="text-center">
+                                                         <span class="spinner-border text-primary mt-5" style="width:7rem;height:7rem"></span>
+                                                     </div>`;
+        var db = firebase.database().ref('notification');
+        var lst = '';
+        db.orderByChild('sendTo').equalTo(currentUserKey).on('value', function (users) {
+            if (users.hasChildren()) {
+                lst = `<li class="list-group-item" style="background-color:#f8f8f8;">
+                                <input type="text" placeholder="Search or new chat" class="form-control form-rounded" />
+                            </li>`;
+            }
+            users.forEach(function (data) {
+                var user = data.val();
+                user.email !== firebase.auth().currentUser.email
+                lst += `<li class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="${user.photo}" class="rounded-circle friend-pic" />
+                                </div>
+                                <div class="col-md-10" style="cursor:pointer;">
+                                    <div class="name">${user.name}</div>
+                                </div>
+                            </div>
+                        </li>`;
+            });
+
+            document.getElementById('lstNotification').innerHTML = lst;
+        });
+}
+
 // function PopulateFriendList() {
 //     document.getElementById('lstFriend').innerHTML = `<div class="text-center">
 //                                                          <span class="spinner-border text-primary mt-5" style="width:7rem;height:7rem"></span>
