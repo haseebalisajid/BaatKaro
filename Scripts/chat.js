@@ -447,7 +447,7 @@ function PopulateNotifications(){
                                 </div>
                                 <div class="col-md-10" style="cursor:pointer;">
                                     <div class="name">${user.name}
-                                        <button onclick="Reject()" class="btn btn-sm btn-danger" style="float:right;margin-left:1%;"><i class="fas fa-user-times"></i> Reject</button>
+                                        <button onclick="Reject(${data.key})" class="btn btn-sm btn-danger" style="float:right;margin-left:1%;"><i class="fas fa-user-times"></i> Reject</button>
                                         <button onclick="Accept()" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-user-check"></i> Accept</button>
                                     </div>
                                 </div>
