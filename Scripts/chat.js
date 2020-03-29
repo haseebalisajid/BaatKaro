@@ -335,7 +335,7 @@ function LoadChatList() {
                                 </div>
                                 <div class="col-md-10" style="cursor:pointer;">
                                     <div class="name">${user.name}</div>
-                                    // <div class="under-name">${user.Status}</div>
+                                    
                                 </div>
                             </div>
                         </li>`;
