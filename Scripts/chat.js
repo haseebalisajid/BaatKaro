@@ -383,7 +383,9 @@ function notificationCount(){
     let db=firebase.database().ref('notification');
 
     db.orderByChild('sendTo').equalTo(currentUserKey).on('value',function(noti){
-        document.getElementById('notification').innerHTML=noti.numChildren();
+        let count=noti.numChildren();
+        console.log(count)
+        document.getElementById('notification').innerHTML=count;
     })
 }
 
