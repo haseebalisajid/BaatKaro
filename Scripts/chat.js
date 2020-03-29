@@ -414,7 +414,7 @@ function sendRequest(key){
         name:firebase.auth().currentUser.displayName,
         photo:firebase.auth().currentUser.photoURL,
         dateTime:new Date().toLocaleString(),
-        status="Pending"
+        status:'Pending'
     } 
     firebase.database().ref('notification').push(notification,function(error){
         if(error){
