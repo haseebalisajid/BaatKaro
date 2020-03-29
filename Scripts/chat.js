@@ -370,7 +370,7 @@ function PopulateUserList() {
                                 </div>
                                 <div class="col-md-10" style="cursor:pointer;">
                                     <div class="name">${user.name}
-                                        <button class="btn btn-sm btn-primary" style="float:right;"><i class="fas fa-user-plus"></i>Sent</button>
+                                        <button class="btn btn-sm btn-default style="float:right;"><i class="fas fa-user-plus"></i>Sent</button>
                                     </div>
                                 </div>
                             </div>
