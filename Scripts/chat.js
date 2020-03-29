@@ -374,7 +374,7 @@ function PopulateUserList() {
             }
         });
 
-        document.getElementById('lstUsers').innerHTML = lst;
+        document.getElementById('lstFriend').innerHTML = lst;
     });
 
 }
