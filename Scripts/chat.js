@@ -524,7 +524,7 @@ function PopulateFriendList() {
     document.getElementById('lstFriend').innerHTML = `<div class="text-center">
                                                          <span class="spinner-border text-primary mt-5" style="width:7rem;height:7rem"></span>
                                                      </div>`;
-    var db = firebase.database().ref('notifications');
+    var db = firebase.database().ref('users');
     var lst = '';
     db.on('value', function (users) {
         if (users.hasChildren()) {
@@ -534,7 +534,7 @@ function PopulateFriendList() {
         }
         users.forEach(function (data) {
             var user = data.val();
-            if (user.status === 'Accept') {
+            if (user.email !== firebase.auth().currentUser.email) {
                 lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" onclick="StartChat('${data.key}', '${user.name}', '${user.photoURL}')">
                             <div class="row">
                                 <div class="col-md-2">
