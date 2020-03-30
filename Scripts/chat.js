@@ -494,8 +494,8 @@ function Reject(key){
             }
         })
     })
-    var db = firebase.database().ref('notification').child(key);
-    db.remove();
+    var dbb = firebase.database().ref('notification').child(key);
+    dbb.remove();
 }
 
 function Accept(key){
