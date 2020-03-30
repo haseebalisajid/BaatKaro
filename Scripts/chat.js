@@ -368,10 +368,6 @@ function PopulateUserList() {
                     noti.forEach(function(data){
                         chk=data.val()
                     })
-                    dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
-                        noti.forEach(function(data){
-                            chkk=data.val()
-                        })
                     if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
                         if(chk.status === "Accept"){
                             console.log("in IF")
@@ -409,6 +405,9 @@ function PopulateUserList() {
                     }
                     else{
                         dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
+                            noti.forEach(function(data){
+                                chkk=data.val()
+                            })
                             if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
                                 if(chkk.status === 'Accept'){
                                     console.log("in IF")
