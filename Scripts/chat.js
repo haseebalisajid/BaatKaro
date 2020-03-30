@@ -364,7 +364,7 @@ function PopulateUserList() {
             if (user.email !== firebase.auth().currentUser.email) {
                 dbNoti.orderByChild('sendTo').equalTo(data.key).on('value',function(noti){
                     if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
-                        lst += `<li class="list-group-item list-group-item-action data-dismiss="modal">
+                        lst += `<li class="list-group-item list-group-item-action">
                             <div class="row">
                                 <div class="col-md-2">
                                     <img src="${user.photoURL}" class="rounded-circle friend-pic" />
@@ -381,7 +381,7 @@ function PopulateUserList() {
                     else{
                         dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
                             if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
-                                lst += `<li class="list-group-item list-group-item-action data-dismiss="modal"">
+                                lst += `<li class="list-group-item list-group-item-action">
                                     <div class="row">
                                         <div class="col-md-2">
                                             <img src="${user.photoURL}" class="rounded-circle friend-pic" />
@@ -403,7 +403,7 @@ function PopulateUserList() {
                                         </div>
                                         <div class="col-md-10" style="cursor:pointer;">
                                             <div class="name">${user.name}
-                                                <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" data-dismiss="modal" id="sta" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
+                                                <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" id="sta" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
                                             </div>
                                         </div>
                                     </div>
@@ -441,8 +441,11 @@ function sendRequest(key){
         if(error){
             alert(error)
         }
-
+        else{
+            PopulateUserList()
+        }
     })
+    location.reload();
 }
 
 function PopulateNotifications(){
@@ -453,22 +456,22 @@ function PopulateNotifications(){
         var lst = '';
         db.orderByChild('sendTo').equalTo(currentUserKey).on('value', function (users) {
             if (users.hasChildren()) {
-                lst = `<li class="list-group-item"  style="background-color:#f8f8f8;">
+                lst = `<li class="list-group-item" style="background-color:#f8f8f8;">
                                 <input type="text" placeholder="Search or new chat" class="form-control form-rounded" />
                             </li>`;
             }
             users.forEach(function (data) {
                 var user = data.val();
                 if(user.status === 'Pending'){
-                    lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal">
+                    lst += `<li class="list-group-item list-group-item-action">
                         <div class="row">
                             <div class="col-md-2">
                                 <img src="${user.photo}" class="rounded-circle friend-pic" />
                             </div>
                             <div class="col-md-10" style="cursor:pointer;">
                                 <div class="name">${user.name}
-                                    <button onclick="Reject('${data.key}')" data-dismiss="modal" class="btn btn-sm btn-danger" style="float:right;margin-left:1%;"><i class="fas fa-user-times"></i> Reject</button>
-                                    <button onclick="Accept('${data.key}')" data-dismiss="modal" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-user-check"></i> Accept</button>
+                                    <button onclick="Reject('${data.key}')" class="btn btn-sm btn-danger" style="float:right;margin-left:1%;"><i class="fas fa-user-times"></i> Reject</button>
+                                    <button onclick="Accept('${data.key}')" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-user-check"></i> Accept</button>
                                 </div>
                             </div>
                         </div>
@@ -488,11 +491,15 @@ function Reject(key){
             if(error){
                 console.log(error)
             }
-
+            else{
+                PopulateNotifications();
+            }
         })
     })
     var dbb = firebase.database().ref('notification').child(key);
     dbb.remove();
+    location.reload();
+
 }
 
 function Accept(key){
@@ -505,6 +512,7 @@ function Accept(key){
                 console.log(error)
             }
             else{
+                PopulateNotifications();
                 var friendList = { friendId: obj.sendFrom, userId: obj.sendTo };
                 firebase.database().ref('friend_list').push(friendList, function(error){
                     if(error){
@@ -517,6 +525,7 @@ function Accept(key){
             }
         })
     })
+    location.reload();
 
 }   
 
