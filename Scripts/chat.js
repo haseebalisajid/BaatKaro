@@ -382,6 +382,7 @@ function PopulateUserList() {
                                     </div>
                                 </li>`;
                                 document.getElementById('lstUsers').innerHTML = lst;
+                                console.log("in Friend block")
                             }
                             else {
                                 lst += `<li class="list-group-item list-group-item-action">
@@ -397,6 +398,7 @@ function PopulateUserList() {
                                     </div>
                                 </li>`;
                                 document.getElementById('lstUsers').innerHTML = lst;
+                                console.log("in sent block")
                             }
                         })
                     }
@@ -419,6 +421,7 @@ function PopulateUserList() {
                                             </div>
                                         </li>`;
                                         document.getElementById('lstUsers').innerHTML = lst; 
+                                        console.log("in 2nd friend block")
                                     }
                                     else{
                                         lst += `<li class="list-group-item list-group-item-action">
@@ -434,6 +437,7 @@ function PopulateUserList() {
                                             </div>
                                         </li>`;
                                         document.getElementById('lstUsers').innerHTML = lst; 
+                                        console.log("in pending block")
                                     }
                                 })
                             }
@@ -451,6 +455,7 @@ function PopulateUserList() {
                                     </div>
                                 </li>`;
                                 document.getElementById('lstUsers').innerHTML = lst;
+                                console.log("in send req block")
                             }
                         })
                     }
