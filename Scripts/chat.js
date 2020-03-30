@@ -436,7 +436,7 @@ function sendRequest(key){
         dateTime:new Date().toLocaleString(),
         status:'Pending'
     } 
-    firebase.database().ref('notification').child().set(notification,function(error){
+    firebase.database().ref('notification').push(notification,function(error){
         if(error){
             alert(error)
         }
