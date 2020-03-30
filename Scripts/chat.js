@@ -384,7 +384,7 @@ function PopulateUserList() {
                             </li>`;
                             document.getElementById('lstUsers').innerHTML = lst;
                         }
-                        else if(chk.status === 'Pending'){
+                        else {
                             console.log("in Else")
                            
                             lst += `<li class="list-group-item list-group-item-action">
@@ -421,7 +421,7 @@ function PopulateUserList() {
                                     </li>`;
                                     document.getElementById('lstUsers').innerHTML = lst; 
                                 }
-                                else if(chk.status === 'Pending'){
+                                else{
                                     console.log("in Else")
                                     
                                     lst += `<li class="list-group-item list-group-item-action">
