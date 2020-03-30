@@ -350,6 +350,7 @@ function PopulateUserList() {
                                                      </div>`;
     var db = firebase.database().ref('users');
     var dbNoti=firebase.database().ref('notification');
+    
     var lst = '';
     db.on('value', function (users) {
         if (users.hasChildren()) {
@@ -363,7 +364,7 @@ function PopulateUserList() {
             if (user.email !== firebase.auth().currentUser.email) {
                 dbNoti.orderByChild('sendTo').equalTo(data.key).on('value',function(noti){
                     if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
-                        console.log(noti.val().status)
+                        console.log(noti.val())
                         if(noti.val().status === 'Accept'){
                             console.log("in IF")
                             lst += `<li class="list-group-item list-group-item-action">
@@ -400,7 +401,7 @@ function PopulateUserList() {
                     else{
                         dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
                             if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
-                                console.log(noti.val().status)
+                                console.log(noti.val())
                                 if(noti.val().status === 'Accept'){
                                     console.log("in IF")
                                     lst += `<li class="list-group-item list-group-item-action">
