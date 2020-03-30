@@ -362,8 +362,7 @@ function PopulateUserList() {
             var user = data.val();
             if (user.email !== firebase.auth().currentUser.email) {
                 dbNoti.orderByChild('sendTo').equalTo(data.key).on('value',function(noti){
-                    var obj=noti.val();
-                    console.log(obj.status)
+
                     if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
                         lst += `<li class="list-group-item list-group-item-action">
                             <div class="row">
