@@ -362,15 +362,13 @@ function PopulateUserList() {
         }
         users.forEach(function (data) {
             var user = data.val();
-            
             if (user.email !== firebase.auth().currentUser.email) {
                 dbNoti.orderByChild('sendTo').equalTo(data.key).on('value',function(noti){
                     noti.forEach(function(data){
                         chk=data.val()
                     })
-                    console.log(chk)
                     if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
-                        if(noti.val().status === "Accept"){
+                        if(chk.status === "Accept"){
                             console.log("in IF")
                             lst += `<li class="list-group-item list-group-item-action">
                                 <div class="row">
@@ -386,9 +384,9 @@ function PopulateUserList() {
                             </li>`;
                             document.getElementById('lstUsers').innerHTML = lst;
                         }
-                        else{
+                        else if(chk.status === 'Pending'){
                             console.log("in Else")
-                            console.log(noti.val().status)
+                           
                             lst += `<li class="list-group-item list-group-item-action">
                                 <div class="row">
                                     <div class="col-md-2">
@@ -407,8 +405,7 @@ function PopulateUserList() {
                     else{
                         dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
                             if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
-                                console.log(noti.val())
-                                if(noti.val().status === 'Accept'){
+                                if(chk.status === 'Accept'){
                                     console.log("in IF")
                                     lst += `<li class="list-group-item list-group-item-action">
                                         <div class="row">
@@ -424,9 +421,9 @@ function PopulateUserList() {
                                     </li>`;
                                     document.getElementById('lstUsers').innerHTML = lst; 
                                 }
-                                else{
+                                else if(chk.status === 'Pending'){
                                     console.log("in Else")
-                                    console.log(noti.val().status)
+                                    
                                     lst += `<li class="list-group-item list-group-item-action">
                                         <div class="row">
                                             <div class="col-md-2">
