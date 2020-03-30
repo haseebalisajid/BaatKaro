@@ -488,9 +488,7 @@ function sendRequest(key){
         if(error){
             alert(error)
         }
-        else{
-            PopulateUserList()
-        }
+
     })
 }
 
@@ -556,7 +554,7 @@ function Accept(key){
                 console.log(error)
             }
             else{
-                PopulateNotifications();
+                
                 var friendList = { friendId: obj.sendFrom, userId: obj.sendTo };
                 firebase.database().ref('friend_list').push(friendList, function(error){
                     if(error){
