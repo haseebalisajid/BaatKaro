@@ -365,11 +365,17 @@ function PopulateUserList() {
             var user = data.val();
             if (user.email !== firebase.auth().currentUser.email) {
                 dbNoti.orderByChild('sendTo').equalTo(data.key).on('value',function(noti){
-                    if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
+                    noti.forEach(function(data){
+                        chk=data.val()
+                    })
+                    dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
                         noti.forEach(function(data){
-                            chk=data.val()
+                            chkk=data.val()
                         })
+                    })
+                    if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
                         if(chk.status === "Accept"){
+                            console.log("in IF")
                             lst += `<li class="list-group-item list-group-item-action">
                                 <div class="row">
                                     <div class="col-md-2">
@@ -385,6 +391,8 @@ function PopulateUserList() {
                             document.getElementById('lstUsers').innerHTML = lst;
                         }
                         else {
+                            console.log("in Else")
+                           
                             lst += `<li class="list-group-item list-group-item-action">
                                 <div class="row">
                                     <div class="col-md-2">
@@ -402,11 +410,9 @@ function PopulateUserList() {
                     }
                     else{
                         dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
-                            noti.forEach(function(data){
-                                chkk=data.val()
-                            })
                             if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
                                 if(chkk.status === 'Accept'){
+                                    console.log("in IF")
                                     lst += `<li class="list-group-item list-group-item-action">
                                         <div class="row">
                                             <div class="col-md-2">
@@ -422,7 +428,8 @@ function PopulateUserList() {
                                     document.getElementById('lstUsers').innerHTML = lst; 
                                 }
                                 else{
-                                
+                                    console.log("in Else")
+                                    
                                     lst += `<li class="list-group-item list-group-item-action">
                                         <div class="row">
                                             <div class="col-md-2">
