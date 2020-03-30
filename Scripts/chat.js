@@ -402,7 +402,7 @@ function PopulateUserList() {
                                         </div>
                                         <div class="col-md-10" style="cursor:pointer;">
                                             <div class="name">${user.name}
-                                                <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
+                                                <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" id="sta" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
                                             </div>
                                         </div>
                                     </div>
@@ -497,6 +497,7 @@ function Reject(key){
 }
 
 function Accept(key){
+    document.querySelector('#sta').textContent=' Friend'
     let db=firebase.database().ref('notification').child(key).once('value',function(noti){
         var obj=noti.val();
         obj.status='Accept';
