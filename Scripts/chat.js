@@ -368,78 +368,75 @@ function PopulateUserList() {
                     if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
                         noti.forEach(function(data){
                             chk=data.val()
-                            if(chk.status === "Accept"){
-                                lst += `<li class="list-group-item list-group-item-action">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img src="${user.photoURL}" class="rounded-circle friend-pic" />
-                                        </div>
-                                        <div class="col-md-10" style="cursor:pointer;">
-                                            <div class="name">${user.name}
-                                                <button class="btn btn-sm btn-default"  id="Sta" style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>`;
-                                document.getElementById('lstUsers').innerHTML = lst;
-                                console.log("in Friend block")
-                            }
-                            else {
-                                lst += `<li class="list-group-item list-group-item-action">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img src="${user.photoURL}" class="rounded-circle friend-pic" />
-                                        </div>
-                                        <div class="col-md-10" style="cursor:pointer;">
-                                            <div class="name">${user.name}
-                                                <button class="btn btn-sm btn-default"  id="Sta" style="float:right" ><i class="fas fa-user-plus"></i> Sent</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>`;
-                                document.getElementById('lstUsers').innerHTML = lst;
-                                console.log("in sent block")
-                            }
                         })
+                        if(chk.status === "Accept"){
+                            lst += `<li class="list-group-item list-group-item-action">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                    </div>
+                                    <div class="col-md-10" style="cursor:pointer;">
+                                        <div class="name">${user.name}
+                                            <button class="btn btn-sm btn-default"  id="Sta" style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>`;
+                            document.getElementById('lstUsers').innerHTML = lst;
+                        }
+                        else {
+                            lst += `<li class="list-group-item list-group-item-action">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                    </div>
+                                    <div class="col-md-10" style="cursor:pointer;">
+                                        <div class="name">${user.name}
+                                            <button class="btn btn-sm btn-default"  id="Sta" style="float:right" ><i class="fas fa-user-plus"></i> Sent</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>`;
+                            document.getElementById('lstUsers').innerHTML = lst;
+                        }
                     }
                     else{
                         dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
+                            noti.forEach(function(data){
+                                chkk=data.val()
+                            })
                             if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
-                                noti.forEach(function(data){
-                                    chkk=data.val()
-                                    if(chkk.status === 'Accept'){
-                                        lst += `<li class="list-group-item list-group-item-action">
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <img src="${user.photoURL}" class="rounded-circle friend-pic" />
-                                                </div>
-                                                <div class="col-md-10" style="cursor:pointer;">
-                                                    <div class="name">${user.name}
-                                                        <button class="btn btn-sm btn-default"  style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
-                                                    </div>
+                                if(chkk.status === 'Accept'){
+                                    lst += `<li class="list-group-item list-group-item-action">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                            </div>
+                                            <div class="col-md-10" style="cursor:pointer;">
+                                                <div class="name">${user.name}
+                                                    <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
                                                 </div>
                                             </div>
-                                        </li>`;
-                                        document.getElementById('lstUsers').innerHTML = lst; 
-                                        console.log("in 2nd friend block")
-                                    }
-                                    else{
-                                        lst += `<li class="list-group-item list-group-item-action">
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <img src="${user.photoURL}" class="rounded-circle friend-pic" />
-                                                </div>
-                                                <div class="col-md-10" style="cursor:pointer;">
-                                                    <div class="name">${user.name}
-                                                        <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Pending</button>
-                                                    </div>
+                                        </div>
+                                    </li>`;
+                                    document.getElementById('lstUsers').innerHTML = lst; 
+                                }
+                                else{
+                                
+                                    lst += `<li class="list-group-item list-group-item-action">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                            </div>
+                                            <div class="col-md-10" style="cursor:pointer;">
+                                                <div class="name">${user.name}
+                                                    <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Pending</button>
                                                 </div>
                                             </div>
-                                        </li>`;
-                                        document.getElementById('lstUsers').innerHTML = lst; 
-                                        console.log("in pending block")
-                                    }
-                                })
+                                        </div>
+                                    </li>`;
+                                    document.getElementById('lstUsers').innerHTML = lst; 
+                                }
                             }
                             else{
                                 lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
@@ -455,7 +452,6 @@ function PopulateUserList() {
                                     </div>
                                 </li>`;
                                 document.getElementById('lstUsers').innerHTML = lst;
-                                console.log("in send req block")
                             }
                         })
                     }
@@ -488,7 +484,9 @@ function sendRequest(key){
         if(error){
             alert(error)
         }
-
+        else{
+            PopulateUserList()
+        }
     })
 }
 
@@ -554,7 +552,7 @@ function Accept(key){
                 console.log(error)
             }
             else{
-                
+                PopulateNotifications();
                 var friendList = { friendId: obj.sendFrom, userId: obj.sendTo };
                 firebase.database().ref('friend_list').push(friendList, function(error){
                     if(error){
