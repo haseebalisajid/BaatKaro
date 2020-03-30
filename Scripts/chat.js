@@ -400,58 +400,59 @@ function PopulateUserList() {
                             }
                         })
                     }
-                })
-                dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
-                    if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
-                        noti.forEach(function(data){
-                            chkk=data.val()
-                            if(chkk.status === 'Accept'){
-                                lst += `<li class="list-group-item list-group-item-action">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img src="${user.photoURL}" class="rounded-circle friend-pic" />
-                                        </div>
-                                        <div class="col-md-10" style="cursor:pointer;">
-                                            <div class="name">${user.name}
-                                                <button class="btn btn-sm btn-default"  style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
+                    else{
+                        dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
+                            if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
+                                noti.forEach(function(data){
+                                    chkk=data.val()
+                                    if(chkk.status === 'Accept'){
+                                        lst += `<li class="list-group-item list-group-item-action">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                                </div>
+                                                <div class="col-md-10" style="cursor:pointer;">
+                                                    <div class="name">${user.name}
+                                                        <button class="btn btn-sm btn-default"  style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>`;
-                                document.getElementById('lstUsers').innerHTML = lst; 
+                                        </li>`;
+                                        document.getElementById('lstUsers').innerHTML = lst; 
+                                    }
+                                    else{
+                                        lst += `<li class="list-group-item list-group-item-action">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                                </div>
+                                                <div class="col-md-10" style="cursor:pointer;">
+                                                    <div class="name">${user.name}
+                                                        <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Pending</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>`;
+                                        document.getElementById('lstUsers').innerHTML = lst; 
+                                    }
+                                })
                             }
                             else{
-                            
-                                lst += `<li class="list-group-item list-group-item-action">
+                                lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
                                     <div class="row">
                                         <div class="col-md-2">
                                             <img src="${user.photoURL}" class="rounded-circle friend-pic" />
                                         </div>
                                         <div class="col-md-10" style="cursor:pointer;">
                                             <div class="name">${user.name}
-                                                <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Pending</button>
+                                                <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" id="sta" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
                                             </div>
                                         </div>
                                     </div>
                                 </li>`;
-                                document.getElementById('lstUsers').innerHTML = lst; 
+                                document.getElementById('lstUsers').innerHTML = lst;
                             }
                         })
-                    }
-                    else{
-                        lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="${user.photoURL}" class="rounded-circle friend-pic" />
-                                </div>
-                                <div class="col-md-10" style="cursor:pointer;">
-                                    <div class="name">${user.name}
-                                        <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" id="sta" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>`;
-                        document.getElementById('lstUsers').innerHTML = lst;
                     }
                 })
             }
