@@ -497,9 +497,8 @@ function Reject(key){
     var dbb = firebase.database().ref('notification').child(key);
     dbb.remove();
 }
-
 function Accept(key){
-    let db=firebase.database().ref('notification').child(key).once('value',function(noti){
+    let dbb=firebase.database().ref('notification').child(key).once('value',function(noti){
         var obj=noti.val();
         obj.status='Accept';
         firebase.database().ref('notification').child(key).update(obj,function(error){
@@ -513,13 +512,65 @@ function Accept(key){
                     if(error){
                         console.log(error)
                     }
-                    else{
-                        
-                    }
                 })
             }
         })
     })
+    document.getElementById('lstUsers').innerHTML = `<div class="text-center">
+                                                         <span class="spinner-border text-primary mt-5" style="width:7rem;height:7rem"></span>
+                                                     </div>`;
+    var db = firebase.database().ref('users');
+    var dbNoti=firebase.database().ref('notification');
+    var lst = '';
+    db.on('value', function (users) {
+        if (users.hasChildren()) {
+            lst = `<li class="list-group-item" style="background-color:#f8f8f8;">
+                            <input id="Search" type="text"  placeholder="Search or new chat" class="form-control form-rounded" />
+                        </li>`;
+                        document.getElementById('lstUsers').innerHTML = lst;
+        }
+        users.forEach(function (data) {
+            var user = data.val();
+            if (user.email !== firebase.auth().currentUser.email) {
+                dbNoti.orderByChild('sendTo').equalTo(data.key).on('value',function(noti){
+                    if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
+                        lst += `<li class="list-group-item list-group-item-action">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                </div>
+                                <div class="col-md-10" style="cursor:pointer;">
+                                    <div class="name">${user.name}
+                                        <button class="btn btn-sm btn-default"  id="Sta" style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>`;
+                        document.getElementById('lstUsers').innerHTML = lst;
+                    }
+                    else{
+                        dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
+                            if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
+                                lst += `<li class="list-group-item list-group-item-action">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                        </div>
+                                        <div class="col-md-10" style="cursor:pointer;">
+                                            <div class="name">${user.name}
+                                                <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>`;
+                                document.getElementById('lstUsers').innerHTML = lst; 
+                            }
+                        })
+                    }
+                })
+            }
+        });
+    });
 }   
 
 function PopulateFriendList() {
