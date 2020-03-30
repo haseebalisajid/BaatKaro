@@ -370,7 +370,6 @@ function PopulateUserList() {
                     })
                     if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
                         if(chk.status === "Accept"){
-                            console.log("in IF")
                             lst += `<li class="list-group-item list-group-item-action">
                                 <div class="row">
                                     <div class="col-md-2">
@@ -386,8 +385,7 @@ function PopulateUserList() {
                             document.getElementById('lstUsers').innerHTML = lst;
                         }
                         else {
-                            console.log("in Else")
-                           
+
                             lst += `<li class="list-group-item list-group-item-action">
                                 <div class="row">
                                     <div class="col-md-2">
@@ -410,7 +408,6 @@ function PopulateUserList() {
                             })
                             if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
                                 if(chkk.status === 'Accept'){
-                                    console.log("in IF")
                                     lst += `<li class="list-group-item list-group-item-action">
                                         <div class="row">
                                             <div class="col-md-2">
@@ -426,8 +423,7 @@ function PopulateUserList() {
                                     document.getElementById('lstUsers').innerHTML = lst; 
                                 }
                                 else{
-                                    console.log("in Else")
-                                    
+                                
                                     lst += `<li class="list-group-item list-group-item-action">
                                         <div class="row">
                                             <div class="col-md-2">
