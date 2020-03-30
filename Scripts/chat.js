@@ -497,7 +497,6 @@ function Reject(key){
 }
 
 function Accept(key){
-    document.querySelector('#sta').textContent=' Friend'
     let db=firebase.database().ref('notification').child(key).once('value',function(noti){
         var obj=noti.val();
         obj.status='Accept';
