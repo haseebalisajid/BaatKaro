@@ -367,95 +367,94 @@ function PopulateUserList() {
                 dbNoti.orderByChild('sendTo').equalTo(data.key).on('value',function(noti){
                     noti.forEach(function(data){
                         chk=data.val()
-                    })
-                    if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
-                        if(chk.status === "Accept"){
-                            lst += `<li class="list-group-item list-group-item-action">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <img src="${user.photoURL}" class="rounded-circle friend-pic" />
-                                    </div>
-                                    <div class="col-md-10" style="cursor:pointer;">
-                                        <div class="name">${user.name}
-                                            <button class="btn btn-sm btn-default"  id="Sta" style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>`;
-                            document.getElementById('lstUsers').innerHTML = lst;
-                        }
-                        else {
-
-                            lst += `<li class="list-group-item list-group-item-action">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <img src="${user.photoURL}" class="rounded-circle friend-pic" />
-                                    </div>
-                                    <div class="col-md-10" style="cursor:pointer;">
-                                        <div class="name">${user.name}
-                                            <button class="btn btn-sm btn-default"  id="Sta" style="float:right" ><i class="fas fa-user-plus"></i> Sent</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>`;
-                            document.getElementById('lstUsers').innerHTML = lst;
-                        }
-                    }
-                    else{
-                        dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
-                            noti.forEach(function(data){
-                                chkk=data.val()
-                            })
-                            if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
-                                if(chkk.status === 'Accept'){
-                                    lst += `<li class="list-group-item list-group-item-action">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <img src="${user.photoURL}" class="rounded-circle friend-pic" />
-                                            </div>
-                                            <div class="col-md-10" style="cursor:pointer;">
-                                                <div class="name">${user.name}
-                                                    <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>`;
-                                    document.getElementById('lstUsers').innerHTML = lst; 
-                                }
-                                else{
-                                
-                                    lst += `<li class="list-group-item list-group-item-action">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <img src="${user.photoURL}" class="rounded-circle friend-pic" />
-                                            </div>
-                                            <div class="col-md-10" style="cursor:pointer;">
-                                                <div class="name">${user.name}
-                                                    <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Pending</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>`;
-                                    document.getElementById('lstUsers').innerHTML = lst; 
-                                }
-                            }
-                            else{
-                                lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
+                        if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
+                            if(chk.status === "Accept"){
+                                lst += `<li class="list-group-item list-group-item-action">
                                     <div class="row">
                                         <div class="col-md-2">
                                             <img src="${user.photoURL}" class="rounded-circle friend-pic" />
                                         </div>
                                         <div class="col-md-10" style="cursor:pointer;">
                                             <div class="name">${user.name}
-                                                <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" id="sta" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
+                                                <button class="btn btn-sm btn-default"  id="Sta" style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
                                             </div>
                                         </div>
                                     </div>
                                 </li>`;
                                 document.getElementById('lstUsers').innerHTML = lst;
                             }
-                        })
-                    }
+                            else {
+                                lst += `<li class="list-group-item list-group-item-action">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                        </div>
+                                        <div class="col-md-10" style="cursor:pointer;">
+                                            <div class="name">${user.name}
+                                                <button class="btn btn-sm btn-default"  id="Sta" style="float:right" ><i class="fas fa-user-plus"></i> Sent</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>`;
+                                document.getElementById('lstUsers').innerHTML = lst;
+                            }
+                        }
+                        else{
+                            dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
+                                noti.forEach(function(data){
+                                    chkk=data.val()
+                                    if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
+                                        if(chkk.status === 'Accept'){
+                                            lst += `<li class="list-group-item list-group-item-action">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                                    </div>
+                                                    <div class="col-md-10" style="cursor:pointer;">
+                                                        <div class="name">${user.name}
+                                                            <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Friend</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>`;
+                                            document.getElementById('lstUsers').innerHTML = lst; 
+                                        }
+                                        else{
+                                        
+                                            lst += `<li class="list-group-item list-group-item-action">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                                    </div>
+                                                    <div class="col-md-10" style="cursor:pointer;">
+                                                        <div class="name">${user.name}
+                                                            <button class="btn btn-sm btn-default"   style="float:right" ><i class="fas fa-user-plus"></i> Pending</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>`;
+                                            document.getElementById('lstUsers').innerHTML = lst; 
+                                        }
+                                    }
+                                    else{
+                                        lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal" >
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <img src="${user.photoURL}" class="rounded-circle friend-pic" />
+                                                </div>
+                                                <div class="col-md-10" style="cursor:pointer;">
+                                                    <div class="name">${user.name}
+                                                        <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" id="sta" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>`;
+                                        document.getElementById('lstUsers').innerHTML = lst;
+                                    }
+                                })
+                            })
+                        }
+                    })
                 })
             }
         });
