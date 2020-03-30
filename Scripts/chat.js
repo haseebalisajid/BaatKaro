@@ -403,7 +403,7 @@ function PopulateUserList() {
                                         </div>
                                         <div class="col-md-10" style="cursor:pointer;">
                                             <div class="name">${user.name}
-                                                <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" id="sta" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
+                                                <button onclick="sendRequest('${data.key}')" class="btn btn-sm btn-primary" data-dismiss="modal" id="sta" style="float:right;"><i class="fas fa-user-plus"></i> Send Request</button>
                                             </div>
                                         </div>
                                     </div>
@@ -467,8 +467,8 @@ function PopulateNotifications(){
                             </div>
                             <div class="col-md-10" style="cursor:pointer;">
                                 <div class="name">${user.name}
-                                    <button onclick="Reject('${data.key}')" class="btn btn-sm btn-danger" style="float:right;margin-left:1%;"><i class="fas fa-user-times"></i> Reject</button>
-                                    <button onclick="Accept('${data.key}')" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-user-check"></i> Accept</button>
+                                    <button onclick="Reject('${data.key}')" data-dismiss="modal" class="btn btn-sm btn-danger" style="float:right;margin-left:1%;"><i class="fas fa-user-times"></i> Reject</button>
+                                    <button onclick="Accept('${data.key}')" data-dismiss="modal" class="btn btn-sm btn-success" style="float:right;"><i class="fas fa-user-check"></i> Accept</button>
                                 </div>
                             </div>
                         </div>
