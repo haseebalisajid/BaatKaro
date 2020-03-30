@@ -352,6 +352,7 @@ function PopulateUserList() {
     var dbNoti=firebase.database().ref('notification');
     
     var lst = '';
+    var chk='';
     db.on('value', function (users) {
         if (users.hasChildren()) {
             lst = `<li class="list-group-item" style="background-color:#f8f8f8;">
@@ -361,10 +362,11 @@ function PopulateUserList() {
         }
         users.forEach(function (data) {
             var user = data.val();
+            
             if (user.email !== firebase.auth().currentUser.email) {
                 dbNoti.orderByChild('sendTo').equalTo(data.key).on('value',function(noti){
                     noti.forEach(function(data){
-                        var chk=data.val()
+                        chk=data.val()
                     })
                     console.log(chk)
                     if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
