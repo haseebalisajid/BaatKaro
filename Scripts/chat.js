@@ -365,7 +365,7 @@ function PopulateUserList() {
                 dbNoti.orderByChild('sendTo').equalTo(data.key).on('value',function(noti){
                     if(noti.numChildren()>0 && Object.values(noti.val())[0].sendFrom === currentUserKey){
                         console.log(noti.val())
-                        if(noti.val().status === 'Accept'){
+                        if(noti.val().status === "Accept"){
                             console.log("in IF")
                             lst += `<li class="list-group-item list-group-item-action">
                                 <div class="row">
@@ -383,6 +383,7 @@ function PopulateUserList() {
                         }
                         else{
                             console.log("in Else")
+                            console.log(noti.val().status)
                             lst += `<li class="list-group-item list-group-item-action">
                                 <div class="row">
                                     <div class="col-md-2">
@@ -420,6 +421,7 @@ function PopulateUserList() {
                                 }
                                 else{
                                     console.log("in Else")
+                                    console.log(noti.val().status)
                                     lst += `<li class="list-group-item list-group-item-action">
                                         <div class="row">
                                             <div class="col-md-2">
