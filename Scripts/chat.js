@@ -381,7 +381,7 @@ function PopulateUserList() {
                     else{
                         dbNoti.orderByChild('sendFrom').equalTo(data.key).on('value',function(noti){
                             if(noti.numChildren()>0 && Object.values(noti.val())[0].sendTo === currentUserKey){
-                                lst += `<li class="list-group-item list-group-item-action">
+                                lst += `<li class="list-group-item list-group-item-action data-dismiss="modal"">
                                     <div class="row">
                                         <div class="col-md-2">
                                             <img src="${user.photoURL}" class="rounded-circle friend-pic" />
@@ -453,14 +453,14 @@ function PopulateNotifications(){
         var lst = '';
         db.orderByChild('sendTo').equalTo(currentUserKey).on('value', function (users) {
             if (users.hasChildren()) {
-                lst = `<li class="list-group-item" data-dismiss="modal" style="background-color:#f8f8f8;">
+                lst = `<li class="list-group-item"  style="background-color:#f8f8f8;">
                                 <input type="text" placeholder="Search or new chat" class="form-control form-rounded" />
                             </li>`;
             }
             users.forEach(function (data) {
                 var user = data.val();
                 if(user.status === 'Pending'){
-                    lst += `<li class="list-group-item list-group-item-action">
+                    lst += `<li class="list-group-item list-group-item-action" data-dismiss="modal">
                         <div class="row">
                             <div class="col-md-2">
                                 <img src="${user.photo}" class="rounded-circle friend-pic" />
