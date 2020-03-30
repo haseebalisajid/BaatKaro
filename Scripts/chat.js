@@ -482,7 +482,18 @@ function PopulateNotifications(){
 }
 
 function Reject(key){
-
+    let db=firebase.database().ref('notification').child(key).once('value',function(noti){
+        let obj=noti.val();
+        obj.status='Reject';
+        firebase.database().ref('notification').child(key).update(obj,function(error){
+            if(error){
+                console.log(error)
+            }
+            else{
+                PopulateNotifications();
+            }
+        })
+    })
     var db = firebase.database().ref('notification').child(key);
     db.remove();
 }
@@ -590,19 +601,19 @@ function onStateChanged(user) {
                 document.getElementById('lnkSignOut').style = '';
             }
 
-            // const messaging = firebase.messaging();
+            const messaging = firebase.messaging();
 
-            // navigator.serviceWorker.register('../messaging/firebase-messaging-sw.js')
-            //     .then((registration) => {
-            //         messaging.useServiceWorker(registration);
+            navigator.serviceWorker.register('../messaging/firebase-messaging-sw.js')
+                .then((registration) => {
+                    messaging.useServiceWorker(registration);
 
-            //         // Request permission and get token.....
-            //         messaging.requestPermission().then(function () {
-            //             return messaging.getToken();
-            //         }).then(function (token) {
-            //             firebase.database().ref('fcmTokens').child(currentUserKey).set({ token_id: token });
-            //         })
-            //     });
+                    // Request permission and get token.....
+                    messaging.requestPermission().then(function () {
+                        return messaging.getToken();
+                    }).then(function (token) {
+                        firebase.database().ref('fcmTokens').child(currentUserKey).set({ token_id: token });
+                    })
+                });
 
             // document.getElementById('lnkNewChat').classList.remove('disabled');
             // document.getElementById('lnkSetting').classList.remove('disabled');
