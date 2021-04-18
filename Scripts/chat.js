@@ -160,6 +160,7 @@ function StartChat(friendKey, friendName, friendPhoto) {
     document.getElementById("txtMessage").focus();
     ////////////////////////////
     // Display The chat messages
+    PopulateUserList();
     LoadChatMessages(chatKey, friendPhoto);
   });
 }
