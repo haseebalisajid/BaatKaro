@@ -408,7 +408,7 @@ function NotificationCount() {
 
     db.orderByChild('sendTo').equalTo(currentUserKey).on('value', function (noti) {
         let notiArray = Object.values(noti.val()).filter(n => n.status === 'Pending');
-        document.getElementById('notification').innerHTML = notiArray.length;
+        document.getElementById('notification').innerHTML = notiArray.length();
     });
 }
 
