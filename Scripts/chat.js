@@ -220,39 +220,55 @@ function SendMessage() {
     if(msgVal=== ''){
         alert('message cant be empty string');
     }
-    var chatMessage = {
+    else{
+        var chatMessage = {
         userId: currentUserKey,
-        msg: msgVal?msgVal:'.',
-        msgType: 'normal',
-        dateTime: new Date().toLocaleString()
-    };
+        msg: msgVal,
+        msgType: "normal",
+        dateTime: new Date().toLocaleString(),
+        };
 
-    firebase.database().ref('chatMessages').child(chatKey).push(chatMessage, function (error) {
-        if (error) alert(error);
-        else {
-            firebase.database().ref('fcmTokens').child(friend_id).once('value').then(function (data) {
+        firebase
+        .database()
+        .ref("chatMessages")
+        .child(chatKey)
+        .push(chatMessage, function (error) {
+            if (error) alert(error);
+            else {
+            firebase
+                .database()
+                .ref("fcmTokens")
+                .child(friend_id)
+                .once("value")
+                .then(function (data) {
                 $.ajax({
-                    url: 'https://fcm.googleapis.com/fcm/send',
-                    method: 'POST',
+                    url: "https://fcm.googleapis.com/fcm/send",
+                    method: "POST",
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'key=AIzaSyBXkd3HN8IO3Xa4AFTvqFpo5LXZQ9-Rj7s'
+                    "Content-Type": "application/json",
+                    Authorization: "key=AIzaSyBXkd3HN8IO3Xa4AFTvqFpo5LXZQ9-Rj7s",
                     },
                     data: JSON.stringify({
-                        'to': data.val().token_id, 'data': { 'message': chatMessage.msg.substring(0, 30) + '...', 'icon': firebase.auth().currentUser.photoURL }
+                    to: data.val().token_id,
+                    data: {
+                        message: chatMessage.msg.substring(0, 30) + "...",
+                        icon: firebase.auth().currentUser.photoURL,
+                    },
                     }),
                     success: function (response) {
-                        console.log(response);
+                    console.log(response);
                     },
                     error: function (xhr, status, error) {
-                        console.log(xhr.error);
-                    }
+                    console.log(xhr.error);
+                    },
                 });
-            });
-            document.getElementById('txtMessage').value = '';
-            document.getElementById('txtMessage').focus();
-        }
-    });
+                });
+            document.getElementById("txtMessage").value = "";
+            document.getElementById("txtMessage").focus();
+            }
+        });
+    }
+
 }
 
 ///////////////////////////////////////////////////////////////
