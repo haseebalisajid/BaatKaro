@@ -232,49 +232,56 @@ function hideChatList() {
 }
 
 function SendMessage() {
-  var chatMessage = {
-    userId: currentUserKey,
-    msg: document.getElementById("txtMessage").value,
-    msgType: "normal",
-    dateTime: new Date().toLocaleString(),
-  };
+    var msgVal=document.getElementById("txtMessage").value;
 
-  firebase
-    .database()
-    .ref("chatMessages")
-    .child(chatKey)
-    .push(chatMessage, function (error) {
-      if (error) alert(error);
-      else {
+    if(msgVal === '' || msgVal===' '|| msgVal==="  "){
+        alert("Cant send Empty Message");
+    }
+    else{
+        var chatMessage = {
+            userId: currentUserKey,
+            msg: msgVal,
+            msgType: "normal",
+            dateTime: new Date().toLocaleString(),
+        };
+
         firebase
-          .database()
-          .ref("fcmTokens")
-          .child(friend_id)
-          .once("value")
-          .then(function (data) {
-            $.ajax({
-              url: "https://fcm.googleapis.com/fcm/send",
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: "key=AIzaSyAdQ2SoOBYFpskVQOk2WlJI23rM0jOcx1k",
-              },
-              data: JSON.stringify({
-                to: data.val().token_id,
-                data: {
-                  message: chatMessage.msg.substring(0, 30) + "...",
-                  icon: firebase.auth().currentUser.photoURL,
-                  name: firebase.auth().currentUser.name,
-                },
-              }),
-              success: function (response) {},
-              error: function (xhr, status, error) {},
+            .database()
+            .ref("chatMessages")
+            .child(chatKey)
+            .push(chatMessage, function (error) {
+            if (error) alert(error);
+            else {
+                firebase
+                .database()
+                .ref("fcmTokens")
+                .child(friend_id)
+                .once("value")
+                .then(function (data) {
+                    $.ajax({
+                    url: "https://fcm.googleapis.com/fcm/send",
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "key=AIzaSyAdQ2SoOBYFpskVQOk2WlJI23rM0jOcx1k",
+                    },
+                    data: JSON.stringify({
+                        to: data.val().token_id,
+                        data: {
+                        message: chatMessage.msg.substring(0, 30) + "...",
+                        icon: firebase.auth().currentUser.photoURL,
+                        name: firebase.auth().currentUser.name,
+                        },
+                    }),
+                    success: function (response) {},
+                    error: function (xhr, status, error) {},
+                    });
+                });
+                document.getElementById("txtMessage").value = "";
+                document.getElementById("txtMessage").focus();
+            }
             });
-          });
-        document.getElementById("txtMessage").value = "";
-        document.getElementById("txtMessage").focus();
-      }
-    });
+    }
 }
 
 ///////////////////////////////////////////////////////////////
