@@ -611,7 +611,9 @@ function onStateChanged(user) {
         // document.getElementById('lnkNewChat').classList.add('disabled');
     }
 }
-
+function loading(){
+    alert("This Functionality is under development.")
+}
 function callback(error) {
     if (error) {
         alert(error);
