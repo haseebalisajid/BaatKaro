@@ -606,6 +606,7 @@ function onStateChanged(user) {
 
         document.getElementById('lnkSignIn').style = '';
         document.getElementById('lnkSignOut').style = 'display:none';
+        document.getElementById("ss").style = '';
 
         // document.getElementById('lnkNewChat').classList.add('disabled');
     }
