@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title class="footer-copyright text-center py-3">Baat Karo</title>
@@ -9,6 +10,7 @@
     <link href="css/bootstrap-4.3.1.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
 </head>
+
 <body>
     <span class="top"></span>
     <div class="container-fluid bg-white chatbox shadow-lg rounded">
@@ -18,43 +20,26 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-1 col-sm-1 col-md-1 d-md-none">
-                                <i class="fas fa-arrow-left d-md-none" style="font-size:20px;cursor:pointer;" onclick="hideChatList()"></i>
+                                <i class="fas fa-arrow-left d-md-none" style="font-size:20px;cursor:pointer;"
+                                    onclick="hideChatList()"></i>
                             </div>
-                            <div class="col-7 col-sm-7 col-md-7">
+                            <div class="col-9 col-sm-9 col-md-9">
                                 <img id="imgProfile" src="images/pp.png" class="rounded-circle profile-pic" />
-                            </div>
-                            <div class="col-2 col-sm-2 col-md-2">
-                                <a href="#" style="float:right;" onclick="PopulateNotifications()" data-toggle="modal" data-target="#modalNotificationList">
-                                    <i class="fas" style="font-size:25px;color: black;"> &#xf500; </i>
-                                    <span id="notification">0</span>
-                                </a>
-                                <div class="modal fade" id="modalNotificationList">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    Friend Requests
-                                                    <span class="close" data-dismiss="modal" style="cursor:pointer;">&times;</span>
-                                                </div>
-                                                <ul class="list-group list-group-flush" id="lstNotification"></ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="col-2 col-sm-2 col-md-2">
                                 <div class="dropleft">
                                     <span class="dropdown-toggle" data-toggle="dropdown" style="float:right">
-                                        <i class="fas fa-ellipsis-v icon" style="cursor:pointer; color: black;"></i>
+                                        <i class="fas fa-ellipsis-v icon" style="cursor:pointer;"></i>
                                     </span>
                                     <div class="dropdown-menu">
-                                        <a href="#" class="dropdown-item" id="lnk" onclick="PopulateUserList()" data-toggle="modal" data-target="#modalUserList">All Users</a>
-                                        <!-- <a href="#" class="dropdown-item" id="lnkNewChat" onclick="PopulateFriendList()" data-toggle="modal" data-target="#modalFriendList">New Chat</a> -->
+                                        <a href="#" class="dropdown-item" id="lnkNewChat" onclick="PopulateUserList()"
+                                            data-toggle="modal" data-target="#modalUserList">All Users</a>
                                         <a href="#" id="lnkSignIn" onclick="signIn()" class="dropdown-item">Sign In</a>
-                                        <a href="about.html"  class="dropdown-item">About Team</a>
-                                        <!-- <a href="Setting.html"  id="lnkSetting" class="dropdown-item">Setting</a> -->
+                                        <a href="about.html" class="dropdown-item">About Team</a>
+                                        <a href="Setting.html" id="lnkSetting" class="dropdown-item">Setting</a>
                                         <!-- <a href="#"  class="dropdown-item">Help</a> -->
-                                        <a href="#" id="lnkSignOut" onclick="signOut()" class="dropdown-item" style="display:none;">Sign Out</a>
+                                        <a href="#" id="lnkSignOut" onclick="signOut()" class="dropdown-item"
+                                            style="display:none;">Sign Out</a>
                                     </div>
 
                                     <div class="modal fade" id="modalFriendList">
@@ -63,7 +48,8 @@
                                                 <div class="card">
                                                     <div class="card-header">
                                                         Friend List
-                                                        <span class="close" data-dismiss="modal" style="cursor:pointer;">&times;</span>
+                                                        <span class="close" data-dismiss="modal"
+                                                            style="cursor:pointer;">&times;</span>
                                                     </div>
                                                     <ul class="list-group list-group-flush" id="lstFriend"></ul>
                                                 </div>
@@ -76,7 +62,8 @@
                                                 <div class="card">
                                                     <div class="card-header">
                                                         User List
-                                                        <span class="close" data-dismiss="modal" style="cursor:pointer;">&times;</span>
+                                                        <span class="close" data-dismiss="modal"
+                                                            style="cursor:pointer;">&times;</span>
                                                     </div>
                                                     <ul class="list-group list-group-flush" id="lstUsers"></ul>
                                                 </div>
@@ -105,15 +92,16 @@
                                 <div class="under-name" id="divChatSeen" style="color: Red;"></div>
                             </div>
                             <div class="col-4 col-sm-4 col-md-4 col-lg-3 icon">
-                               <a style="text-decoration: none;"><i onclick="loading()" class="fas fa-search" style="color: black;"></i></a>
+                                <a style="text-decoration: none;"><i onclick="loading()" class="fas fa-search"></i></a>
                                 <span class="dropdown">
                                     <span class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="fas fa-paperclip ml-4" style="color: black;"></i>
+                                        <i class="fas fa-paperclip ml-4"></i>
                                     </span>
                                     <div class="dropdown-menu">
                                         <a href="#" class="dropdown-item" onclick="ChooseImage()">
                                             Image
-                                            <input type="file" id="imageFile" onchange="SendImage(this);" accept="image/*" style="display:none;" />
+                                            <input type="file" id="imageFile" onchange="SendImage(this);"
+                                                accept="image/*" style="display:none;" />
                                         </a>
                                         <a href="#" onclick="loading()" class="dropdown-item">Document</a>
                                         <a href="#" onclick="loading()" class="dropdown-item">Video</a>
@@ -122,11 +110,11 @@
 
                                 <span class="dropdown">
                                     <span class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="fas fa-ellipsis-v ml-4" style="color: black;"></i>
+                                        <i class="fas fa-ellipsis-v ml-4"></i>
                                     </span>
-                                    <!-- <div class="dropdown-menu">
+                                    <div class="dropdown-menu">
                                         <a href="#" class="dropdown-item" onclick="unFriend()">Un-Friend</a>
-                                    </div> -->
+                                    </div>
                                 </span>
                             </div>
                         </div>
@@ -140,17 +128,23 @@
                             <div class="col-md-12" id="emoji" style="display:none;">
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#smiley" role="tab" aria-controls="home" aria-selected="true">Smiley</a>
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#smiley"
+                                            role="tab" aria-controls="home" aria-selected="true">Smiley</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" onclick="loading()" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Shape</a>
+                                        <a class="nav-link" id="profile-tab" onclick="loading()" data-toggle="tab"
+                                            href="#profile" role="tab" aria-controls="profile"
+                                            aria-selected="false">Shape</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="contact-tab" onclick="loading()" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                                        <a class="nav-link" id="contact-tab" onclick="loading()" data-toggle="tab"
+                                            href="#contact" role="tab" aria-controls="contact"
+                                            aria-selected="false">Contact</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="smiley" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="tab-pane fade show active" id="smiley" role="tabpanel"
+                                        aria-labelledby="home-tab">
 
                                     </div>
                                 </div>
@@ -158,14 +152,19 @@
                         </div>
                         <div class="row">
                             <div class="col-2 col-md-1" style="cursor:pointer;">
-                                <i class="far fa-grin fa-2x" style="color: black;" onclick="showEmojiPanel()"></i>
+                                <i class="far fa-grin fa-2x" onclick="showEmojiPanel()"></i>
                             </div>
                             <div class="col-8 col-md-10">
-                                <input id="txtMessage" onkeyup="ChangeSendIcon(this)" type="text" onfocus="hideEmojiPanel()" placeholder="Type here" class="form-control form-rounded" />
+                                <input id="txtMessage" onkeyup="ChangeSendIcon(this)" type="text"
+                                    onfocus="hideEmojiPanel()" placeholder="Type here"
+                                    class="form-control form-rounded" />
                             </div>
                             <div class="col-2 col-md-1">
-                                <i style="cursor:pointer;" id="audio" onclick="record(this)"  class="fas fa-microphone fa-2x"></i>
-                                <a onclick="SendMessage()" style="text-decoration: none;"><i  class="fa fa-paper-plane fa-2x" id="send"  style="display:none; cursor:pointer;"></i></a>
+                                <i style="cursor:pointer;" id="audio" onclick="record(this)"
+                                    class="fas fa-microphone fa-2x"></i>
+                                <a onclick="SendMessage()" style="text-decoration: none;"><i
+                                        class="fa fa-paper-plane fa-2x" id="send"
+                                        style="display:none; cursor:pointer;"></i></a>
                             </div>
                         </div>
                     </div>
@@ -173,7 +172,7 @@
 
                 <div id="divStart" class="text-center">
                     <i><img src="images/whatt.png" style="width: 440px;height: 300px; margin-top: 5%;"></i>
-                    <h2  class="mt-4" style="font-size:29.5 px;">Aao <strong>Baat Karo!</strong> </h2>
+                    <h2 class="mt-4" style="font-size:29.5 px;">Aao <strong>Baat Karo!</strong> </h2>
                     <a href="#" onclick="showChatList()" class="d-md-none btn btn-dark mt-3">Start Chat</a>
                     <button id="ss" onclick="signIn()" class="btn btn-dark mt-3">Sign In</button>
                     <!-- <button onclick="signOut()" class="btn btn-dark mt-3">Sign Out</button> -->
@@ -194,4 +193,5 @@
     <script src="Scripts/firebase.init.js"></script>
     <script src="Scripts/chat.js"></script>
 </body>
+
 </html>
