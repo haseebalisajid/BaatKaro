@@ -332,11 +332,6 @@ function unFriend() {
   db.remove();
   location.reload();
 }
-function DelteAccount() {
-  var db = firebase.database().ref("users").child(chatKey);
-  db.remove();
-  location.reload();
-}
 function loading() {
   alert("This feature is not available Right now");
 }
@@ -407,7 +402,6 @@ function PopulateUserList() {
                                 </div>
                                 <div class="col-md-10" style="cursor:pointer;">
                                     <div class="name">${user.name}
-                                        <button class="btn btn-sm btn-primary"><i class="fas fa-user-plus"></i>Send Request</button>
                                     </div>
                                 </div>
                             </div>
