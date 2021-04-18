@@ -216,9 +216,13 @@ function hideChatList() {
 
 
 function SendMessage() {
+    var msgVal=document.getElementById('txtMessage').value;
+    if(msgVal=== ''){
+        alert('message cant be empty string');
+    }
     var chatMessage = {
         userId: currentUserKey,
-        msg: document.getElementById('txtMessage').value,
+        msg: msgVal?msgVal:'.',
         msgType: 'normal',
         dateTime: new Date().toLocaleString()
     };
@@ -226,42 +230,27 @@ function SendMessage() {
     firebase.database().ref('chatMessages').child(chatKey).push(chatMessage, function (error) {
         if (error) alert(error);
         else {
-            if(chatMessage != '' ){
-                            firebase
-                              .database()
-                              .ref("fcmTokens")
-                              .child(friend_id)
-                              .once("value")
-                              .then(function (data) {
-                                $.ajax({
-                                  url: "https://fcm.googleapis.com/fcm/send",
-                                  method: "POST",
-                                  headers: {
-                                    "Content-Type": "application/json",
-                                    Authorization:
-                                      "key=AIzaSyBXkd3HN8IO3Xa4AFTvqFpo5LXZQ9-Rj7s",
-                                  },
-                                  data: JSON.stringify({
-                                    to: data.val().token_id,
-                                    data: {
-                                      message:
-                                        chatMessage.msg.substring(0, 30) +
-                                        "...",
-                                      icon: firebase.auth().currentUser
-                                        .photoURL,
-                                    },
-                                  }),
-                                  success: function (response) {
-                                    console.log(response);
-                                  },
-                                  error: function (xhr, status, error) {
-                                    console.log(xhr.error);
-                                  },
-                                });
-                              });
-                            document.getElementById("txtMessage").value = "";
-                            document.getElementById("txtMessage").focus();
-            }
+            firebase.database().ref('fcmTokens').child(friend_id).once('value').then(function (data) {
+                $.ajax({
+                    url: 'https://fcm.googleapis.com/fcm/send',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'key=AIzaSyBXkd3HN8IO3Xa4AFTvqFpo5LXZQ9-Rj7s'
+                    },
+                    data: JSON.stringify({
+                        'to': data.val().token_id, 'data': { 'message': chatMessage.msg.substring(0, 30) + '...', 'icon': firebase.auth().currentUser.photoURL }
+                    }),
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(xhr.error);
+                    }
+                });
+            });
+            document.getElementById('txtMessage').value = '';
+            document.getElementById('txtMessage').focus();
         }
     });
 }
