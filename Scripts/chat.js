@@ -217,8 +217,8 @@ function hideChatList() {
 
 function SendMessage() {
     var msgVal=document.getElementById('txtMessage').value;
-    if(msgVal=== ''){
-        alert('message cant be empty string');
+    if(msgVal=== '' || msgVal=== ' ' || msgVal=== '  '){
+        alert('Cant send empty message ');
     }
     else{
         var chatMessage = {
